@@ -93,6 +93,19 @@
 						else
 						{	
 							echo $page['content'];
+                            echo "<p>&nbsp;</p>";
+
+                            // подключаем отзывы
+                            if($page['reviews_visible'])
+                            {
+                                require_once 'views/vreview.php';
+
+                                //подключаем форму для отзывов
+                                if($page['reviews_add'])
+                                {
+                                    require_once 'views/vreviewform.php';
+                                }
+                            }
 						}
 													
 						require_once "admin/js/bootstrap/carousel.js";

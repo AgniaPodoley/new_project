@@ -220,10 +220,24 @@
                  visible_in_main_menu enum('0','1') NOT NULL,
 				 visible_in_sidebar enum('0','1') NOT NULL,
 				 active_link_in_sidebar enum('0','1') NOT NULL,
+				 reviews_visible enum('0','1') NOT NULL,
+				 reviews_add enum('0','1') NOT NULL,
                  PRIMARY KEY (id)
-                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";                
-				        
-        // структура таблицы 'users'         
+                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
+
+        // структура таблицы 'reviews'
+        $reviews = "CREATE TABLE IF NOT EXISTS reviews (
+                id int(4) NOT NULL AUTO_INCREMENT,              
+                page_id int(4) NOT NULL,
+                name varchar(255) NOT NULL,
+                review text NOT NULL,
+                autor varchar(255) NOT NULL,
+                visible enum('0','1') NOT NULL,
+                state varchar(255) NOT NULL,
+                PRIMARY KEY (id)
+                ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
+
+        // структура таблицы 'users'
         $users = "CREATE TABLE IF NOT EXISTS users (
                 id int(11) NOT NULL AUTO_INCREMENT,
                 login varchar(15) NOT NULL,
@@ -238,7 +252,8 @@
         $createTables->sql($constants)
 		&& $createTables->sql($languages)
         && $createTables->sql($menus)
-		&& $createTables->sql($pages)        
+		&& $createTables->sql($pages)
+        && $createTables->sql($reviews)
         && $createTables->sql($users)
     )
 	{
@@ -282,26 +297,40 @@
 		
 		// pages
         $addpageRu1 = "insert into
-					pages(language,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar)
-        			VALUES('ru','icon-home','icon-large','1','Главная','1','1','1','1','Главная','{$dt}','адрес сайта | Ключевое слово | Главная','1')";
+					pages(language,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
+        			VALUES('ru','icon-home','icon-large','1','Главная','1','1','1','1','Главная','{$dt}','адрес сайта | Ключевое слово | Главная','1','1','1')";
 
         $addpageRu2 = "insert into
-					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar)
-        			VALUES('1','ru','1','Пример страницы','2','1','0','1','Пример страницы','{$dt}','адрес сайта | Ключевое слово | Пример страницы','1')";
+					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
+        			VALUES('1','ru','1','Пример страницы','2','1','0','1','Пример страницы','{$dt}','адрес сайта | Ключевое слово | Пример страницы','1','1','1')";
 
         $addpageEn1 = "insert into
-					pages(language,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar)
-        			VALUES('en','icon-home','icon-large','2','Main','3','1','1','1','Main','{$dt}','site address | Keyword | Main','1')";
+					pages(language,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
+        			VALUES('en','icon-home','icon-large','2','Main','3','1','1','1','Main','{$dt}','site address | Keyword | Main','1','1','1')";
 
         $addpageEn2 = "insert into
-					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar)
-        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1')";
+					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
+        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1','1','0')";
 
-		// users        
+        // reviews
+        $addreview1 =  "insert into
+					reviews(page_id,name,review,autor,visible,state)
+    				VALUES('3','Первый отзыв','Очень хороший отзыв на странице \"Пример страницы\"','Администратор сайта','1','new')";
+
+        $addreview2 =  "insert into
+					reviews(page_id,name,review,autor,visible,state)
+    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','1','good')";
+
+        $addreview3 =  "insert into
+					reviews(page_id,name,review,autor,visible,state)
+    				VALUES('1','Отзыв на главной','Пример отзыва на странице \"Главная\"','Администратор сайта','1','good')";
+
+        // users
 		$adduser = "insert into
 					users(login,password)
     				VALUES('admin','42f3d4cf9443bb1cbf053f7933f37d98')";
-     
+
+
             
     // добавляем данные в созданные таблицы           
     echo "Добавляем первоначальные данные в созданные таблицы...";    
@@ -315,7 +344,10 @@
         && $createTables->sql($addpageRu1)
         && $createTables->sql($addpageEn1)
         && $createTables->sql($addpageRu2)
-        && $createTables->sql($addpageEn2)        
+        && $createTables->sql($addpageEn2)
+        && $createTables->sql($addreview1)
+        && $createTables->sql($addreview2)
+        && $createTables->sql($addreview3)
         && $createTables->sql($adduser)
     )
 	{

@@ -9,7 +9,7 @@ class Mcontent extends Db
             settype($id, 'integer');
         }
 
-        $sql = "SELECT content, description, keywords, title, created  FROM pages WHERE id = {$id} && visible = '1' LIMIT 1";
+        $sql = "SELECT content, description, keywords, title, created, reviews_visible, reviews_add  FROM pages WHERE id = {$id} && visible = '1' LIMIT 1";
 		
 		// если попали в корень домена
         if(!$id)
@@ -28,7 +28,7 @@ class Mcontent extends Db
 				$id=1;
 			}
 			
-			$sql = "SELECT content, description, keywords, title, created  FROM pages WHERE id = {$id} && visible = '1' LIMIT 1";
+			$sql = "SELECT content, description, keywords, title, created, reviews_visible, reviews_add FROM pages WHERE id = {$id} && visible = '1' LIMIT 1";
         }
         $res = $this->sql($sql);
         return $res;
