@@ -1,0 +1,191 @@
+.dropdown:hover ul.parent{display: block; margin: 0; position: relative; left: 0px;} 
+body {
+	background-color: #fff;
+}
+
+body a{
+
+
+}
+
+
+.logotext{
+	text-align:center;
+	font-family: 'Marck Script';
+	color:#44403F;
+}
+
+.logotext a,a:hover{
+	text-decoration:none;
+}
+
+.slogan{
+	text-align:center;
+	padding:20px 0px;
+	font-style:italic;
+	color:#44403F;
+}
+h2{
+	font-family: 'Marck Script', cursive;
+	font-size: 25px;
+}
+.footer{text-align:center;}
+.development{text-align:center; padding-bottom:25px;}
+.counter{padding:0px 30px 30px 30px;margin-top:10px;}
+.language{float:right; margin-top:13px; margin-right:10px; margin-bottom:10px;}
+.search{margin-right:10px;}
+#.social{float:right; margin-top:13px; margin-right:30px; margin-bottom:10px;}
+.text-center{text-align:center;}
+.text-right{text-align:right;}
+
+.rw-banner {
+	margin: 0 auto;
+	width: 900px;
+}
+
+.carousel-caption {
+	text-align: justify;
+	padding-top:5px;padding-bottom:5px;
+	
+}
+.carousel-caption h4,.carousel-caption p{color:#ffffff;line-height:20px;}
+.carousel-caption h4{text-align: left;margin:0 0 5px;}
+.carousel-caption p{margin-bottom:0;}
+
+/* Main menu custom */
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(51, 51, 51, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 14px;
+    background-color: #EEEEEE;
+
+    border-width: 0px;
+    border-radius: 4px;
+}
+
+#custom-bootstrap-menu.navbar-default ul{
+    padding-top: 8px;
+	margin-top: 4px;
+}
+
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(51, 51, 51, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(248, 248, 248, 0);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(85, 85, 85, 1);
+    background-color: rgba(231, 231, 231, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #ddd;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #ddd;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #888;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #dc381c;
+}
+
+/* Кнопка вверх */
+.btn-custom , .btn-custom:hover, .btn-custom:focus{
+	background-color: #EEEEEE;
+	border: none;
+	color: rgba(51, 51, 51, 1);
+	font-size: 14px;
+	border-radius: 4px;
+	border-width: 1px;
+}
+
+/* Боковое меню */
+.nav {
+    padding: 0px;
+}
+.nav li{
+    padding-top: 0px;
+	margin-top: 0px;
+	text-transform:uppercase;
+}
+
+#content_zone{
+	float:none;
+}
+
+
+.photos_align {
+	display: block; /* Блочный элемент (для старых браузеров) */
+    text-align: center; /* Выравнивание по центру */
+    margin-top: 0; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+    color: #666; /* Цвет подрисуночной подписи */
+}
+
+.photos_align2 {
+	display: block; /* Блочный элемент (для старых браузеров) */
+    text-align: center; /* Выравнивание по центру */
+    margin-left: 0; /* Отступ сверху */
+    margin-bottom: 10px; /* Отступ снизу */
+/* Цвет подрисуночной подписи */
+}
+
+.photos_align  a{
+    color: #000;
+}
+
+/* Выравнивание картинки в ссылке по центру */
+.center_a_img {
+	display:block;
+	margin:0 auto;
+}
+
+/* Заголовок */
+.title_header{
+	background: rgba(240, 12, 39, 1);
+	background: -webkit-linear-gradient(top, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
+	background: linear-gradient(to bottom, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
+	border-radius: 4px;
+	text-align: center; 
+	padding: 8px 0px;
+	margin: 20px 0px;
+	color: #44403F;
+	font-size: 20px;
+	font-style: italic;
+	
+}
+
+/* Установщик */
+#parent {
+	margin:15% auto;
+	float:none;
+	display: table;
+	width:25%;
+	background:#e0e0e0;
+	height:60px;
+}
+
+#child {
+	display: table-cell;
+	vertical-align: middle;
+	text-align:center;
+	vertical-align: middle;
+}
+
+#child input{
+	margin:5px;
+}
+
+#child button{
+	margin:10px;
+}
