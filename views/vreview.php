@@ -2,7 +2,16 @@
 
 $reviews = new Creview();
 $review = array();
-$review = $reviews->get_reviews_from_DB($_GET['id']);
+
+// проверяем не зашёл ли пользователь впервые
+if(!$_GET['id']){
+    $id = 1;
+}
+else{
+    $id = $_GET['id'];
+}
+
+$review = $reviews->get_reviews_from_DB($id);
 
 if(!empty($review)){
     echo "<h2>Отзывы</h2>";
