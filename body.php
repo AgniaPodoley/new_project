@@ -95,6 +95,10 @@
 							echo $page['content'];
                             echo "<p>&nbsp;</p>";
 
+                            if($_POST){
+                                $review = new Creview();
+                                $review->add_review($_POST);
+                            }
                             // подключаем отзывы
                             if($page['reviews_visible'])
                             {

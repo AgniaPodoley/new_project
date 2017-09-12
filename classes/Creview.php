@@ -12,4 +12,14 @@ class Creview extends Mreview
         }
         return $review;
     }
+
+    public function add_review($review){
+        $result = $this->add_new_review($review);
+        if($result){
+            echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
+        }
+        else{
+            echo "Извините, но в процессе отправки отзыва произошла ошибка.";
+        }
+    }
 }
