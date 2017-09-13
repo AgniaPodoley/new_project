@@ -14,6 +14,12 @@ class Creview extends Mreview
     }
 
     public function add_review($review){
+
+        //проверяем не пришел ли отзыв с главной страницы
+        if (!$review['page_id']) {
+            $review['page_id'] = 1;
+        }
+
         $result = $this->add_new_review($review);
         if($result){
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
