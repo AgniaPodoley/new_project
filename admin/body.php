@@ -1,8 +1,9 @@
 <div id="navigation-container">
 	<div id="navigation">
 		<a href = "index.php" title="Главная"><i class="icon-home icon-large"> </i></a>
-		<a href = "?page=rumenulist" title="Список меню"><i class="  icon-reorder icon-large"> </i></a>        
-		<a href = "?page=rulist" title="Список страниц"><i class="  icon-list-ol icon-large"> </i></a>
+		<a href = "?page=rumenulist" title="Список меню"><i class="icon-reorder icon-large"> </i></a>
+		<a href = "?page=rulist" title="Список страниц"><i class="icon-list-ol icon-large"> </i></a>
+        <a href = "?page=rureviews" title="Отзывы"><i class="icon-thumbs-up icon-large"> </i></a>
 		<a href = "?page=languages" title="Языки"><i class="icon-globe icon-large"> </i></a>
 		<a href = "?page=changeauth" title="Пользователи"><i class="icon-user icon-large"> </i></a>
 		<a href = "?page=rusettings" title="Настройки"><i class="icon-cog icon-large"> </i></a>
@@ -29,10 +30,12 @@
 		$allmenus = new Cmenu(); // для работы с меню
 		$alllanguages = new Clanguages(); // для работы с языками
 		$settings = new Csettings(); // для работы с настройками сайта
+        $reviews = new Creview(); // для работы с отзывами
 		
 		// если от пользователя получены данные из формы
 					
-        if($_POST) 
+        // Маршрутизатор
+        if($_POST)
         {
 			
 			// добавляем запись о новом меню в БД
@@ -123,6 +126,7 @@
 				}
 				
             }
+
 			
 			// редактируем язык
 			elseif($_GET['languageedit'])
@@ -244,6 +248,13 @@
 			}
 					
 
+        }
+
+
+        // список озывов
+        elseif ($_GET['page'] == "rureviews")
+        {
+            require_once "views/vrureviews.php" ;
         }
 		
 		// список языков
