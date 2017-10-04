@@ -12,8 +12,9 @@ class Mreview extends Db
 
     public function add_new_review($review){
 
-        $sql = "INSERT into reviews (page_id,name,review,autor,visible,state) VALUES ('{$review['page_id']}','{$review['name']}','{$review['review']}','{$review['autor']}','1','new')";
+        $dt = time(); // текущая метка времени
 
+        $sql = "INSERT into reviews (page_id,name,review,autor,visible,state,created) VALUES ('{$review['page_id']}','{$review['name']}','{$review['review']}','{$review['autor']}','1','new','{$dt}')";
         $res = $this->sql($sql);
         return $res; // возвращаем результат
     }
