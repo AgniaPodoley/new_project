@@ -1,7 +1,7 @@
 <?php
 function __autoload($name)
 {
-   require_once('../classes/' . $name . '.class.php'); 
+   require_once('../classes/' . $name . '.php'); 
 }
 if($_POST['submit'])
 {
