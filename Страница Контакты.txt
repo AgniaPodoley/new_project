@@ -1,0 +1,33 @@
+<div>
+
+<h3>Форма обратной связи<br /></h3>
+
+<form action="views/vmail.php" method=post>
+
+    <div>
+    <label>Номер телефона для связи с Вами:</label>
+    <input type="text" name="phone" />
+    </div>
+
+    <div>
+    <label>Ваш адрес электронной почты:</label>
+    <input type="text" name="from" />
+    </div>
+    
+    <div>		  
+    <label>Teма сообщения:</label>
+    <input type="text" name="subject"/>
+    </div>
+    
+    <div>          
+    <label>Сообщение:</label>
+    <textarea name="mess" rows="10"></textarea>
+    </div>
+      
+    <div>        
+    <input type="submit" value="Отправить" name="submit" />
+    <input type="reset"  value="Очистить" name="reset" />
+    </div>
+    
+</form>
+</div>
