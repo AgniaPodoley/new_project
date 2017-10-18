@@ -150,6 +150,23 @@ h2{
 	margin:0 auto;
 }
 
+/* ОТЗЫВЫ */
+/* Цитаты для отзывов */
+blockquote{
+	background-color: #8f8f73;
+	color: white;
+	font-family: "Times New Roman", Georgia, Serif;
+}
+
+/* Заголовки для отзывов */
+.review_header{
+	font-family: "Times New Roman", Georgia, Serif;
+	font-weight: bold ;
+	font-size: medium;
+	font-style: italic;
+}
+
+
 /* Заголовок */
 .title_header{
 	background: rgba(240, 12, 39, 1);
