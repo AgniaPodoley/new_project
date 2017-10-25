@@ -166,6 +166,19 @@ blockquote{
 	font-style: italic;
 }
 
+/* Цвет звездочек системы рейтинга отзывов */
+.rating_green{
+	color: green;
+}
+
+.rating_yellow{
+	color: yellow;
+}
+
+.rating_red{
+	color: red;
+}
+
 
 /* Заголовок */
 .title_header{

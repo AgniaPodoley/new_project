@@ -4,7 +4,7 @@ class Mreview extends Db
 {
     public function return_reviews($id)
     {
-        $sql = "SELECT id, name, review, autor, created FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id"; // готовим запрос
+        $sql = "SELECT id, name, review, autor, created, rating FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id"; // готовим запрос
 
         $res = $this->sql($sql); // выполняем запрос
         return $res; // возвращаем результат

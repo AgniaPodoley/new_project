@@ -10,6 +10,9 @@ function __autoload($name)
    require_once('classes/' . $name . '.php');
 }
 
+// библиотека функций
+//require_once "../lib/functions.php";
+
 // создадим основной обьект настроек
 $site_ini = new Msettings();
 
