@@ -14,7 +14,7 @@ class Mreview extends Db
 
         $dt = time(); // текущая метка времени
 
-        $sql = "INSERT into reviews (page_id,name,review,autor,visible,state,created) VALUES ('{$review['page_id']}','{$review['name']}','{$review['review']}','{$review['autor']}','1','new','{$dt}')";
+        $sql = "INSERT into reviews (page_id,name,review,autor,visible,state,created,rating) VALUES ('{$review['page_id']}','{$review['name']}','{$review['review']}','{$review['autor']}','1','new','{$dt}',,'{$review['rating']}')";
 
         $res = $this->sql($sql);
         return $res; // возвращаем результат

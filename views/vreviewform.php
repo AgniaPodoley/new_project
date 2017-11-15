@@ -1,6 +1,16 @@
 <form method="post">
 <p></p><legend>Добавьте свой отзыв</legend>
     <p></p> <input type="hidden" name="page_id" value="<?php echo $_GET['id'];?>">
+    <p><label>Ваша оценка</label></p>
+    <p>
+        <select name="rating" multiple class="form-control">
+            <option value="1"><?php getRating(1); ?></option>
+            <option value="2"><?php getRating(2); ?></option>
+            <option value="3"><?php getRating(3); ?></option>
+            <option value="4"><?php getRating(4); ?></option>
+            <option value="5"><?php getRating(5); ?></option>
+        </select>
+    </p>
     <p><label>Название отзыва</label></p>
     <p><input type="text" name="name" placeholder="Название отзыва"></p>
     <p><label>Отзыв</label></p>

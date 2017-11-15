@@ -1,5 +1,7 @@
-<?php 
+<?php
+
 require_once 'views/vcontent.php';
+require_once 'lib/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -19,7 +21,7 @@ require_once 'views/vcontent.php';
 		<!--End Meta-->
 		
 		<title><?php echo $page['title'];?></title>  
-		
+
 		<!--CSS-->
 		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="style/jquery.navgoco.css" rel="stylesheet" />
