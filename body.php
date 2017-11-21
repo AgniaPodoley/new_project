@@ -95,6 +95,7 @@
 							echo $page['content'];
                             echo "<p>&nbsp;</p>";
 
+                            // если пользователь отправил отзыв
                             if($_POST){
                                 $review = new Creview();
                                 $review->add_review($_POST);
