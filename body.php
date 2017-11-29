@@ -99,6 +99,7 @@
                             if($_POST){
                                 $review = new Creview();
                                 $review->add_review($_POST);
+
                             }
                             // подключаем отзывы
                             if($page['reviews_visible'])

@@ -276,3 +276,10 @@ blockquote{
 	top:2px;
 	left:2px;
 }
+
+.review{
+	border: solid grey 1px;
+	margin-bottom: 2%;
+	padding: 1%;
+	border-radius: 10px;
+}

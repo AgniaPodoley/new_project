@@ -1,0 +1,1 @@
+INSERT INTO new_project.users (login, password) VALUES ('admin', '42f3d4cf9443bb1cbf053f7933f37d98');

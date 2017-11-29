@@ -17,5 +17,7 @@
     <p><textarea rows="10" cols="45" name="review" placeholder="Текст отзыва"></textarea></p>
     <p><label>Ваше имя</label></p>
     <p><input type="text" name="autor" placeholder="Как вас зовут"></p>
+    <p><label>e-mail</label></p>
+    <p><input type="text" name="email" placeholder="Адрес вашей электронной почты"></p>
     <p><button type="submit" class="btn btn-primary">Добавить отзыв</button></p>
 </form>

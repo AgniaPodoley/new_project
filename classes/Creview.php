@@ -22,6 +22,7 @@ class Creview extends Mreview
 
         $result = $this->add_new_review($review);
         if($result){
+            $send_notification = new SendMail("{$review['email']}","Новый отзыв на сайте", "{$review['review']}","");
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
         }
         else{
