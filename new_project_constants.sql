@@ -1,2 +1,0 @@
-INSERT INTO new_project.constants (language, domainname, site, footer) VALUES ('ru', 'http://localhost/new_project', 'Название сайта', 'Не является публичной офертой');
-INSERT INTO new_project.constants (language, domainname, site, footer) VALUES ('en', 'http://localhost/new_project', 'Site name', 'Not a public offer');

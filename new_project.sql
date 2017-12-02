@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Окт 04 2017 г., 15:34
--- Версия сервера: 10.1.26-MariaDB
--- Версия PHP: 7.1.8
+-- Время создания: Дек 02 2017 г., 13:59
+-- Версия сервера: 10.1.16-MariaDB
+-- Версия PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -145,31 +143,36 @@ CREATE TABLE `reviews` (
   `visible` enum('0','1') NOT NULL,
   `state` varchar(255) NOT NULL,
   `created` int(255) NOT NULL,
-  `lastmod` int(255) NOT NULL
+  `lastmod` int(255) NOT NULL,
+  `rating` int(1) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `reviews`
 --
 
-INSERT INTO `reviews` (`id`, `page_id`, `name`, `review`, `autor`, `visible`, `state`, `created`, `lastmod`) VALUES
-(1, 3, 'Первый отзыв', 'Очень хороший отзыв на странице \"Пример страницы\"', 'Администратор сайта', '1', 'new', 0, 0),
-(2, 4, 'Second review', 'Very good review on page \"Example page\"', 'Site administrator', '1', 'good', 0, 0),
-(3, 1, 'Отзыв на главной', 'Пример отзыва на странице \"Главная\"', 'Администратор сайта', '1', 'good', 1504795508, 0),
-(4, 1, 'Супер крутой отзыв', 'Лучший сайт', 'Владлен', '', 'new', 0, 0),
-(5, 1, 'Супер крутой отзыв2', 'qqqqqqqqqqqqqqqqqqqqqqq', 'Владлен Иванович', '1', 'good', 0, 0),
-(6, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0),
-(7, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0),
-(8, 0, '1', '2', '3', '0', 'good', 0, 0),
-(9, 1, '4', '5', '6', '1', 'good', 0, 0),
-(10, 1, '22', '22', '22', '1', 'new', 0, 0),
-(11, 1, 'xcv', 'xcv', 'gnom', '1', 'new', 0, 0),
-(12, 1, 'kkk', 'kkk', 'kkk', '1', 'new', 0, 0),
-(13, 1, 'jjj', 'jjjj', 'jjj', '1', 'new', 0, 0),
-(14, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0),
-(15, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0),
-(16, 1, '7', '7', '7', '1', 'new', 0, 0),
-(17, 1, '555', '555', '555', '1', 'good', 1507123778, 0);
+INSERT INTO `reviews` (`id`, `page_id`, `name`, `review`, `autor`, `visible`, `state`, `created`, `lastmod`, `rating`, `email`) VALUES
+(1, 3, 'Первый отзыв', 'Очень хороший отзыв на странице "Пример страницы"', 'Администратор сайта', '1', 'new', 0, 0, NULL, NULL),
+(2, 4, 'Second review', 'Very good review on page "Example page"', 'Site administrator', '1', 'good', 0, 0, NULL, NULL),
+(3, 1, 'Отзыв на главной', 'Пример отзыва на странице "Главная"', 'Администратор сайта', '1', 'good', 1504795508, 0, NULL, NULL),
+(4, 1, 'Супер крутой отзыв', 'Лучший сайт', 'Владлен', '', 'new', 0, 0, NULL, NULL),
+(5, 1, 'Супер крутой отзыв2', 'qqqqqqqqqqqqqqqqqqqqqqq', 'Владлен Иванович', '1', 'good', 0, 0, NULL, NULL),
+(6, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0, NULL, NULL),
+(7, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0, NULL, NULL),
+(8, 0, '1', '2', '3', '0', 'good', 0, 0, NULL, NULL),
+(9, 1, '4', '5', '6', '1', 'good', 0, 0, NULL, NULL),
+(10, 1, '22', '22', '22', '1', 'new', 0, 0, NULL, NULL),
+(11, 1, 'xcv', 'xcv', 'gnom', '1', 'new', 0, 0, NULL, NULL),
+(12, 1, 'kkk', 'kkk', 'kkk', '1', 'new', 0, 0, NULL, NULL),
+(13, 1, 'jjj', 'jjjj', 'jjj', '1', 'new', 0, 0, NULL, NULL),
+(14, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0, NULL, NULL),
+(15, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0, NULL, NULL),
+(16, 1, '7', '7', '7', '1', 'new', 0, 0, NULL, NULL),
+(17, 1, '555', '555', '555', '1', 'good', 1507123778, 0, NULL, NULL),
+(18, 1, 'мой отзыв', '1111', 'Дядя Ваня', '1', 'good', 1512219199, 0, 0, 'lyubomyr83@gmail.com'),
+(19, 1, 'супер', 'Отзыв от Дяди Фёдора', 'Дядя Фёдор', '1', 'new', 1512219331, 0, 0, 'lyubomyr83@gmail.com'),
+(20, 1, 'мой отзыв', 'Дядя Фёдор', 'Дядя Фёдор', '1', 'good', 1512219390, 0, 5, 'lyubomyr83@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -258,13 +261,12 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT для таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

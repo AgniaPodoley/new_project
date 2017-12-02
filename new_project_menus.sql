@@ -1,2 +1,0 @@
-INSERT INTO new_project.menus (menu_name, position, language, created, lastmod, visible, header_visible) VALUES ('Мы предлагаем', 1, 'ru', 1504795508, 0, '1', '1');
-INSERT INTO new_project.menus (menu_name, position, language, created, lastmod, visible, header_visible) VALUES ('We offer', 2, 'en', 1504795508, 0, '1', '1');
