@@ -1,13 +1,49 @@
-.dropdown:hover ul.parent{display: block; margin: 0; position: relative; left: 0px;} 
-body {
-	background-color: #fff;
-}
+.dropdown:hover ul.parent{display: block; margin: 0; position: relative; left: 0px;}
 
-body a{
+/* Установщик*/
+    #parent {
+        margin:15% auto;
+        float:none;
+        display: table;
+        width:25%;
+        background:#e0e0e0;
+        height:60px;
+    }
+
+    #child {
+        display: table-cell;
+        vertical-align: middle;
+        text-align:center;
+        vertical-align: middle;
+    }
+
+    #child input{
+        margin:5px;
+    }
+
+    #child button{
+        margin:10px;
+    }
+
+/* END Установщик*/
+
+/* Основные стили сайта*/
+
+    body {
+        background-color: #fff;
+    }
+
+    body a{
 
 
-}
+    }
 
+    h2{
+        font-family: 'Marck Script', cursive;
+        font-size: 25px;
+    }
+
+/* END Основные стили сайта*/
 
 .logotext{
 	text-align:center;
@@ -25,10 +61,23 @@ body a{
 	font-style:italic;
 	color:#44403F;
 }
-h2{
-	font-family: 'Marck Script', cursive;
-	font-size: 25px;
+
+/* Заголовок */
+.title_header{
+	background: rgba(240, 12, 39, 1);
+	background: -webkit-linear-gradient(top, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
+	background: linear-gradient(to bottom, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
+	border-radius: 4px;
+	text-align: center;
+	padding: 8px 0px;
+	margin: 20px 0px;
+	color: #44403F;
+	font-size: 20px;
+	font-style: italic;
+
 }
+
+
 .footer{text-align:center;}
 .development{text-align:center; padding-bottom:25px;}
 .counter{padding:0px 30px 30px 30px;margin-top:10px;}
@@ -151,135 +200,99 @@ h2{
 }
 
 /* ОТЗЫВЫ */
-/* Цитаты для отзывов */
-blockquote{
-	background-color: #8f8f73;
-	color: white;
-	font-family: "Times New Roman", Georgia, Serif;
-}
 
-/* Заголовки для отзывов */
-.review_header{
-	font-family: "Times New Roman", Georgia, Serif;
-	font-weight: bold ;
-	font-size: medium;
-	font-style: italic;
-}
+	.review{
+		border: solid grey 1px;
+		margin-bottom: 2%;
+		padding: 1%;
+		border-radius: 10px;
+	}
 
-/* Цвет звездочек системы рейтинга отзывов */
-.rating_green{
-	color: green;
-}
+	/* Заголовки для отзывов */
+	.review_header{
+		font-family: "Times New Roman", Georgia, Serif;
+		font-weight: bold ;
+		font-size: medium;
+		font-style: italic;
+	}
 
-.rating_yellow{
-	color: yellow;
-}
-
-.rating_red{
-	color: red;
-}
+	/* Цитаты для отзывов */
+	blockquote{
+		background-color: #8f8f73;
+		color: white;
+		font-family: "Times New Roman", Georgia, Serif;
+	}
 
 
-/* Заголовок */
-.title_header{
-	background: rgba(240, 12, 39, 1);
-	background: -webkit-linear-gradient(top, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
-	background: linear-gradient(to bottom, rgba(250, 242, 0, 1) 0%, rgba(240, 12, 39, 1) 100%);
-	border-radius: 4px;
-	text-align: center; 
-	padding: 8px 0px;
-	margin: 20px 0px;
-	color: #44403F;
-	font-size: 20px;
-	font-style: italic;
-	
-}
 
-/* Установщик */
-#parent {
-	margin:15% auto;
-	float:none;
-	display: table;
-	width:25%;
-	background:#e0e0e0;
-	height:60px;
-}
+	/* Звездочки системы рейтинга отзывов */
+	.rating_green{
+		color: green;
+	}
 
-#child {
-	display: table-cell;
-	vertical-align: middle;
-	text-align:center;
-	vertical-align: middle;
-}
+	.rating_yellow{
+		color: yellow;
+	}
 
-#child input{
-	margin:5px;
-}
+	.rating_red{
+		color: red;
+	}
 
-#child button{
-	margin:10px;
-}
+	/* Звёздочки рейтинга в пользовательской форме*/
+	.rating {
+		float:left;
+	}
 
-/* Звёздочки рейтинга */
-.rating {
-	float:left;
-}
+	/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+	   follow these rules. Every browser that supports :checked also supports :not(), so
+	   it doesn’t make the test unnecessarily selective */
+	.rating:not(:checked) > input {
+		position:absolute;
+		/*top:-9999px;*/
+		clip:rect(0,0,0,0);
+	}
 
-/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
-   follow these rules. Every browser that supports :checked also supports :not(), so
-   it doesn’t make the test unnecessarily selective */
-.rating:not(:checked) > input {
-	position:absolute;
-	top:-9999px;
-	clip:rect(0,0,0,0);
-}
+	.rating:not(:checked) > label {
+		float:right;
+		width:1em;
+		padding:0 .1em;
+		overflow:hidden;
+		white-space:nowrap;
+		cursor:pointer;
+		font-size:200%;
+		line-height:1.2;
+		color:#ddd;
+		text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+	}
 
-.rating:not(:checked) > label {
-	float:right;
-	width:1em;
-	padding:0 .1em;
-	overflow:hidden;
-	white-space:nowrap;
-	cursor:pointer;
-	font-size:200%;
-	line-height:1.2;
-	color:#ddd;
-	text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
-}
+	.rating:not(:checked) > label:before {
+		content: '★ ';
+	}
 
-.rating:not(:checked) > label:before {
-	content: '★ ';
-}
+	.rating > input:checked ~ label {
+		color: #f70;
+		text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+	}
 
-.rating > input:checked ~ label {
-	color: #f70;
-	text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
-}
+	.rating:not(:checked) > label:hover,
+	.rating:not(:checked) > label:hover ~ label {
+		color: gold;
+		text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+	}
 
-.rating:not(:checked) > label:hover,
-.rating:not(:checked) > label:hover ~ label {
-	color: gold;
-	text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
+	.rating > input:checked + label:hover,
+	.rating > input:checked + label:hover ~ label,
+	.rating > input:checked ~ label:hover,
+	.rating > input:checked ~ label:hover ~ label,
+	.rating > label:hover ~ input:checked ~ label {
+		color: #ea0;
+		text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+	}
 
-.rating > input:checked + label:hover,
-.rating > input:checked + label:hover ~ label,
-.rating > input:checked ~ label:hover,
-.rating > input:checked ~ label:hover ~ label,
-.rating > label:hover ~ input:checked ~ label {
-	color: #ea0;
-	text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
-}
+	.rating > label:active {
+		position:relative;
+		top:2px;
+		left:2px;
+	}
 
-.rating > label:active {
-	position:relative;
-	top:2px;
-	left:2px;
-}
-
-.review{
-	border: solid grey 1px;
-	margin-bottom: 2%;
-	padding: 1%;
-	border-radius: 10px;
-}
+/* END ОТЗЫВЫ */
