@@ -1,5 +1,5 @@
 <form method="post">
-    <legend>Добавьте свой отзыв</legend>
+    <legend><?=REVIEWADD?></legend>
     <p><input type="hidden" name="page_id" value="<?php echo $_GET['id'];?>"> </p>
 
     <fieldset class="rating radiogroup">
@@ -10,7 +10,7 @@
         <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
     </fieldset>
 
-    <p><label>Название отзыва</label></p>
+    <p><label><?=REVIEWNAME?></label></p>
     <p><input type="text" name="name" placeholder="Название отзыва"></p>
     <p><label>Отзыв</label></p>
     <p><textarea rows="10" cols="45" name="review" placeholder="Текст отзыва"></textarea></p>

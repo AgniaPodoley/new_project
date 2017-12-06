@@ -11,7 +11,7 @@ function __autoload($name)
 }
 
 // библиотека функций
-//require_once "../lib/functions.php";
+require_once "lib/functions.php";
 
 // создадим основной обьект настроек
 $site_ini = new Msettings();

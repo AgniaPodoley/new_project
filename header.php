@@ -1,7 +1,5 @@
 <?php
-
 require_once 'views/vcontent.php';
-require_once 'lib/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="ru">

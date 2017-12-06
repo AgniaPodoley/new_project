@@ -23,6 +23,16 @@ define ('SUBJECT','Teма сообщения');
 define ('MESSAGE','Сообщение');
 define ('SEND','Отправить');
 define ('CLEAR','Очистить');
+// Отзывы
+define ('REVIEWADD','Добавьте свой отзыв');
+define ('REVIEWNAME','Название отзыва');
+define ('REVIEW','Отзыв');
+define ('REVIEWINPUT','Текст отзыва');
+define ('REVIEWUSERNAME','Ваше имя');
+define ('REVIEWUSERNAMEINPUT','Как вас зовут');
+define ('REVIEWUSEREMAIL','email');
+define ('REVIEWUSEREMAILINPUT','Адрес вашей ьэлектронной почты');
+define ('REVIEWBUTTON','Добавить отзыв');
 //404
 define ('NOTFIND','Запрашиваемая вами страница не существует, проверьте корректность написания в адресной строке');
 // footer

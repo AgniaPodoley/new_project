@@ -22,6 +22,16 @@ define ('SUBJECT','Subject');
 define ('MESSAGE','Message');
 define ('SEND','Send');
 define ('CLEAR','Clear');
+// Отзывы
+define ('REVIEWADD','Add your review');
+define ('REVIEWNAME','Review name');
+define ('REVIEW','Your review');
+define ('REVIEWINPUT','Text of review');
+define ('REVIEWUSERNAME','Your name');
+define ('REVIEWUSERNAMEINPUT','Your name');
+define ('REVIEWUSEREMAIL','email');
+define ('REVIEWUSEREMAILINPUT','Your email address');
+define ('REVIEWBUTTON','Add review');
 //404
 define ('NOTFIND','The page you requested does not exist, check the correct spelling in the address bar');
 // footer
