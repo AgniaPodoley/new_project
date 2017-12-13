@@ -26,6 +26,7 @@ define ('CLEAR','Очистить');
 // Отзывы
 define ('REVIEWADD','Добавьте свой отзыв');
 define ('REVIEWNAME','Название отзыва');
+define ('REVIEWNAMEINPUT','Название');
 define ('REVIEW','Отзыв');
 define ('REVIEWINPUT','Текст отзыва');
 define ('REVIEWUSERNAME','Ваше имя');

@@ -27,5 +27,10 @@ if(!empty($review)){
         echo "<p class=\"review_autor\"><span class=\"review_bold\"></span><i class=\"icon-user icon-large\"> </i><span class=\"review_italic\">".$res["autor"]."</span></p>";
         echo "</div>";
     }
+
+    $page_links = $reviews->pagination();
+    for ($i=1;$i<=$page_links;$i++){
+        echo "<a href=\"\">".$i."</a>";
+    }
 }
 

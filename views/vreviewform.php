@@ -11,12 +11,12 @@
     </fieldset>
 
     <p><label><?=REVIEWNAME?></label></p>
-    <p><input type="text" name="name" placeholder="Название отзыва"></p>
-    <p><label>Отзыв</label></p>
-    <p><textarea rows="10" cols="45" name="review" placeholder="Текст отзыва"></textarea></p>
-    <p><label>Ваше имя</label></p>
-    <p><input type="text" name="autor" placeholder="Как вас зовут"></p>
-    <p><label>e-mail</label></p>
-    <p><input type="text" name="email" placeholder="Адрес вашей электронной почты"></p>
-    <p><button type="submit" class="btn btn-primary">Добавить отзыв</button></p>
+    <p><input type="text" name="name" placeholder="<?=REVIEWNAMEINPUT?>"></p>
+    <p><label><?=REVIEW?></label></p>
+    <p><textarea rows="10" cols="45" name="review" placeholder="<?=REVIEWINPUT?>"></textarea></p>
+    <p><label><?=REVIEWUSERNAME?></label></p>
+    <p><input type="text" name="autor" placeholder="<?=REVIEWUSERNAMEINPUT?>"></p>
+    <p><label><?=REVIEWUSEREMAIL?></label></p>
+    <p><input type="text" name="email" placeholder="<?=REVIEWUSEREMAILINPUT?>"></p>
+    <p><button type="submit" class="btn btn-primary"><?=REVIEWBUTTON?></button></p>
 </form>
