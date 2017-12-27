@@ -28,9 +28,5 @@ if(!empty($review)){
         echo "</div>";
     }
 
-    $page_links = $reviews->pagination();
-    for ($i=1;$i<=$page_links;$i++){
-        echo "<a href=\"\">".$i."</a>";
-    }
 }
 
