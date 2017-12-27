@@ -232,8 +232,12 @@
                 name varchar(255) NOT NULL,
                 review text NOT NULL,
                 autor varchar(255) NOT NULL,
+                email varchar(255) NOT NULL,
                 visible enum('0','1') NOT NULL,
                 state varchar(255) NOT NULL,
+                created int(255) NOT NULL,
+                lastmod int(255) NOT NULL,
+                rating int(1) NOT NULL,
                 PRIMARY KEY (id)
                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 
@@ -310,20 +314,20 @@
 
         $addpageEn2 = "insert into
 					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
-        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1','1','0')";
+        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1','1','1')";
 
         // reviews
         $addreview1 =  "insert into
-					reviews(page_id,name,review,autor,visible,state)
-    				VALUES('3','Первый отзыв','Очень хороший отзыв на странице \"Пример страницы\"','Администратор сайта','1','new')";
+					reviews(page_id,name,review,autor,visible,state,created,rating)
+    				VALUES('3','Первый отзыв','Очень хороший отзыв на странице \"Пример страницы\"','Администратор сайта','1','new','{$dt}','5')";
 
         $addreview2 =  "insert into
-					reviews(page_id,name,review,autor,visible,state)
-    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','1','good')";
+					reviews(page_id,name,review,autor,visible,state,created,rating)
+    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','1','good','{$dt}','5')";
 
         $addreview3 =  "insert into
-					reviews(page_id,name,review,autor,visible,state)
-    				VALUES('1','Отзыв на главной','Пример отзыва на странице \"Главная\"','Администратор сайта','1','good')";
+					reviews(page_id,name,review,autor,visible,state,created,rating)
+    				VALUES('1','Отзыв на главной','Пример отзыва на странице \"Главная\"','Администратор сайта','1','good','{$dt}','4')";
 
         // users
 		$adduser = "insert into
