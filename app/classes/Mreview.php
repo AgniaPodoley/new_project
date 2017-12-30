@@ -1,6 +1,7 @@
 <?php
+namespace app\classes;
 
-class Mreview extends Db
+class Mreview
 {
     // пагинация
     public function pagination()
@@ -8,7 +9,7 @@ class Mreview extends Db
         $reviews_per_page = 3;
 
         $sql = "SELECT COUNT (*) FROM reviews"; // готовим запрос
-        $res = $this->sql($sql); // выполняем запрос
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
 
         $col_pages = $res/$reviews_per_page;
 
@@ -21,7 +22,7 @@ class Mreview extends Db
     {
         $sql = "SELECT id, name, review, autor, created, rating FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id DESC"; // готовим запрос
 
-        $res = $this->sql($sql); // выполняем запрос
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат
     }
 
@@ -31,7 +32,7 @@ class Mreview extends Db
 
         $sql = "INSERT into reviews (page_id,name,review,autor,email,visible,state,created,rating) VALUES ('{$review['page_id']}','{$review['name']}','{$review['review']}','{$review['autor']}','{$review['email']}','1','new','{$dt}','{$review['rating']}')";
 
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат
     }
 

@@ -1,5 +1,7 @@
 <?php
-class Mcontent extends Db 
+namespace app\classes;
+
+class Mcontent
 {
     function return_content($id = NULL)
 	{
@@ -30,7 +32,7 @@ class Mcontent extends Db
 			
 			$sql = "SELECT content, description, keywords, title, created, reviews_visible, reviews_add FROM pages WHERE id = {$id} && visible = '1' LIMIT 1";
         }
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
     }
 }

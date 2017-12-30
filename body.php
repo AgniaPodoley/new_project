@@ -97,7 +97,7 @@
 
                             // если пользователь отправил отзыв
                             if($_POST){
-                                $review = new Creview();
+                                $review = new \app\classes\Creview();
                                 $review->add_review($_POST);
 
                             }

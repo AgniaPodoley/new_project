@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Cmenu extends Mmenu 
 {      
     // возвращаем меню с БД

@@ -1,7 +1,7 @@
 <?php
 // подготавливаем обьекты
-$all_menus = new Callmenus(); // список доступных меню
-$smain_menu = new CsidebarMenu(); 
+$all_menus = new \app\classes\Callmenus(); // список доступных меню
+$smain_menu = new \app\classes\CsidebarMenu();
 
 // получаем массив всех меню с БД $items[id] = array;
 $menus_items = $all_menus->get_menus_from_DB();

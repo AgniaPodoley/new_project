@@ -1,6 +1,6 @@
 <?php
 // подготавливаем обьекты
-$main_menu = new Cmenu(); // список элементов меню
+$main_menu = new \app\classes\Cmenu(); // список элементов меню
 
 // получаем массив всего меню с БД $items[id] = array;
 $items = $main_menu->get_menu_from_DB();

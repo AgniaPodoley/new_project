@@ -3,7 +3,7 @@ echo "<p><h2>".SEARCH1."</h2></p>";
 $search_word = $_POST['search'];
 
 // создаем новый обьект
-$vsearch_list = new Csearch();
+$vsearch_list = new \app\classes\Csearch();
 // делаем запрос 
 $list = $vsearch_list->print_search($search_word);
 // считаем количество найденных совпадений

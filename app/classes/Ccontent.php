@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Ccontent extends Mcontent 
 {
     function print_content($id)

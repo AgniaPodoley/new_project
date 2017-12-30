@@ -7,14 +7,14 @@ ini_set('display_errors', '0');
 // автозагрузка классов
 function __autoload($name)
 {
-   require_once('classes/' . $name . '.php');
+   require_once($name.'.php');
 }
 
 // библиотека функций
 require_once "lib/functions.php";
 
 // создадим основной обьект настроек
-$site_ini = new Msettings();
+$site_ini = new \app\classes\Msettings();
 
 	// опрелелим имя домена
 	$dom = $site_ini->return_domain();

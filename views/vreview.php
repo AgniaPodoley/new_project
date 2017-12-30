@@ -1,6 +1,6 @@
 <?php
 
-$reviews = new Creview();
+$reviews = new \app\classes\Creview();
 $review = array();
 
 // проверяем не зашёл ли пользователь впервые
@@ -14,7 +14,7 @@ else{
 $review = $reviews->get_reviews_from_DB($id);
 
 if(!empty($review)){
-    echo "<h2>Отзывы</h2>";
+    echo "<h2>".REVIEWS."</h2>";
     foreach ($review as $value){
         echo "<div class=\"review\">";
         foreach ($value as $key=>$item){

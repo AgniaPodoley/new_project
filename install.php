@@ -2,10 +2,10 @@
 
 /**
  * @filename install.php
- * создание БД, таблиц и заполнение первоначальными данными
+ * создание таблиц и заполнение первоначальными данными
  * @author Клуб интеллектуалов
  * @copyright 01.04.2014
- * @updated 09.03.2017
+ * @updated 28.12.2017
  */
 
 ?>
@@ -54,7 +54,7 @@
     
     function __autoload($name)
     {
-       require_once('classes/' . $name . '.php'); 
+       require_once($name.'.php');
     }
 
     // если впервые запущена установка рисуем форму
@@ -116,23 +116,25 @@
     }
 
     // генерируем текст файла настроек для подключения к БД
-    $file_contents = '<?php 
-    class Config
-    {
-        protected $DB_HOST = "';
+    $file_contents = '<?php
+namespace app\classes;
+     
+class Config
+{
+    const DB_HOST = "';
     $file_contents .= $db_server_adress;
     $file_contents .= '"; // адрес сервера БД
-        protected $DB_USER = "';
+    const DB_USER = "';
     $file_contents .= $db_user_name;
     $file_contents .= '"; // имя пользователя 
-        protected $DB_PASS = "';
+    const DB_PASS = "';
     $file_contents .= $db_user_password;
     $file_contents .= '"; // пароль пользователя
-        protected $DB_NAME = "';
+    const DB_NAME = "';
     $file_contents .= $db_database_name;
     $file_contents .= '"; // название БД
-        protected $SQLCHARSET = "utf8"; // кодировка БД
-    }';
+    const SQLCHARSET = "utf8"; // кодировка БД
+}';
 
     // напишем функцию для создания файла
     function create_db_settings_file($file_path,$contents){
@@ -154,17 +156,14 @@
     }
 
     // задаем имя файлов настроек которые необходимо создать
-    define('MYNAME','classes/Config.php');
-    define('MYNAME2','admin/classes/Config.php');
+    define('MYNAME','app/classes/Config.php');
+    define('MYNAME2','admin/app/classes/Config.php');
 
     // создадим эти файлы
     create_db_settings_file(MYNAME,$file_contents);
     create_db_settings_file(MYNAME2,$file_contents);
 
 
-    // создаем новый обьект БД
-    $createTables= new Install();
-    
     // подготовим запросы для создания новых таблиц
      
         // структура таблицы 'constants'        
@@ -248,17 +247,19 @@
                 password varchar(50) NOT NULL,
                 PRIMARY KEY (id)
                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
-            
-                
-    // создаем таблицы в существующей БД              
-    echo "Создаем таблицы в созданной базе данных...";
+
+    // Подключаемся к БД
+    $mydbobj = \app\classes\Db::getInstance();
+
+    // создаем таблицы в существующей БД
+    echo "Создаем таблицы в базе данных ".$db_database_name." ...";
     if(
-        $createTables->sql($constants)
-		&& $createTables->sql($languages)
-        && $createTables->sql($menus)
-		&& $createTables->sql($pages)
-        && $createTables->sql($reviews)
-        && $createTables->sql($users)
+        $mydbobj->sql($constants)
+		&& $mydbobj->sql($languages)
+        && $mydbobj->sql($menus)
+		&& $mydbobj->sql($pages)
+        && $mydbobj->sql($reviews)
+        && $mydbobj->sql($users)
     )
 	{
         echo "OK<br />";
@@ -306,15 +307,15 @@
 
         $addpageRu2 = "insert into
 					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
-        			VALUES('1','ru','1','Пример страницы','2','1','0','1','Пример страницы','{$dt}','адрес сайта | Ключевое слово | Пример страницы','1','1','1')";
+        			VALUES('1','ru','1','Пример страницы','2','1','0','1','Пример страницы','{$dt}','адрес сайта | Ключевое слово | Пример страницы','1','1','0')";
 
         $addpageEn1 = "insert into
 					pages(language,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
-        			VALUES('en','icon-home','icon-large','2','Main','3','1','1','1','Main','{$dt}','site address | Keyword | Main','1','1','1')";
+        			VALUES('en','icon-home','icon-large','2','Main','3','1','1','1','Main','{$dt}','site address | Keyword | Main','1','0','0')";
 
         $addpageEn2 = "insert into
 					pages(parent_id,language,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,content,created,title,active_link_in_sidebar,reviews_visible,reviews_add)
-        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1','1','1')";
+        			VALUES('2','en','2','Example page','4','1','0','1','Example page','{$dt}','site address | Keyword | Example page','1','1','0')";
 
         // reviews
         $addreview1 =  "insert into
@@ -323,7 +324,7 @@
 
         $addreview2 =  "insert into
 					reviews(page_id,name,review,autor,visible,state,created,rating)
-    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','1','good','{$dt}','5')";
+    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','0','good','{$dt}','5')";
 
         $addreview3 =  "insert into
 					reviews(page_id,name,review,autor,visible,state,created,rating)
@@ -339,20 +340,20 @@
     // добавляем данные в созданные таблицы           
     echo "Добавляем первоначальные данные в созданные таблицы...";    
     if(
-        $createTables->sql($addConstantsRu)
-		&& $createTables->sql($addConstantsEn)
-		&& $createTables->sql($addLanguageRu)
-        && $createTables->sql($addLanguageEn)
-		&& $createTables->sql($addmenuRu)
-        && $createTables->sql($addmenuEn)
-        && $createTables->sql($addpageRu1)
-        && $createTables->sql($addpageEn1)
-        && $createTables->sql($addpageRu2)
-        && $createTables->sql($addpageEn2)
-        && $createTables->sql($addreview1)
-        && $createTables->sql($addreview2)
-        && $createTables->sql($addreview3)
-        && $createTables->sql($adduser)
+        $mydbobj->sql($addConstantsRu)
+		&& $mydbobj->sql($addConstantsEn)
+		&& $mydbobj->sql($addLanguageRu)
+        && $mydbobj->sql($addLanguageEn)
+		&& $mydbobj->sql($addmenuRu)
+        && $mydbobj->sql($addmenuEn)
+        && $mydbobj->sql($addpageRu1)
+        && $mydbobj->sql($addpageEn1)
+        && $mydbobj->sql($addpageRu2)
+        && $mydbobj->sql($addpageEn2)
+        && $mydbobj->sql($addreview1)
+        && $mydbobj->sql($addreview2)
+        && $mydbobj->sql($addreview3)
+        && $mydbobj->sql($adduser)
     )
 	{
         echo "OK<br />";
@@ -367,7 +368,6 @@
     echo "<a href=\"$domain_name\">Перейти на сайт</a>&nbsp;|&nbsp; <a href=\"{$domain_name}\admin\">Система администрирования</a>";
 
     // !!!РАЗКОММЕНТИРУЙТЕ НА РАБОЧЕМ ПРОЭКТЕ
-    // unlink('classes/Install.php');
 	// unlink('install.php');
     // unlink('Установка.txt');
 

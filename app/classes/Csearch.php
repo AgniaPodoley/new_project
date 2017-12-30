@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Csearch extends Msearch  // класс поиска по сайту
 {
 	// проверка запроса

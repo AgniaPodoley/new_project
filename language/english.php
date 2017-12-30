@@ -23,6 +23,7 @@ define ('MESSAGE','Message');
 define ('SEND','Send');
 define ('CLEAR','Clear');
 // Отзывы
+define ('REVIEWS','Reviews');
 define ('REVIEWADD','Add your review');
 define ('REVIEWNAME','Review name');
 define ('REVIEWNAMEINPUT','Name');

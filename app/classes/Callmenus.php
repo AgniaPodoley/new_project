@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Callmenus extends Mallmenus
 {      
     // возвращаем меню с БД
