@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class CcreateEdit extends McreateEdit 
 {
 	// переводим спецсимволы в html сущности

@@ -1,11 +1,13 @@
 <?php
-class McreateEdit extends Db 
+namespace app\classes;
+
+class McreateEdit
 {
 	// возвращает список всех страниц 
 	function retr ()
 	{ 
         $sql = "SELECT id, position, menu_name, language FROM pages ORDER BY position ASC";
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
     }
 	
@@ -13,8 +15,7 @@ class McreateEdit extends Db
 	function language_list($exclude)
 	{ 
         $sql = "SELECT * FROM languages WHERE language <> '{$exclude}'";
-        
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
     }
 	
@@ -22,8 +23,7 @@ class McreateEdit extends Db
 	function menu_list($exclude,$lng)
 	{ 
         $sql = "SELECT * FROM menus WHERE id <> '{$exclude}' AND language = '{$lng}'";
-        
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
     }
 	
@@ -38,7 +38,7 @@ class McreateEdit extends Db
 				'{$post['menu_name']}',{$post['position']},'{$post['visible']}','{$post['visible_in_main_menu']}','{$post['visible_in_sidebar']}','{$post['active_link_in_sidebar']}','{$post['content']}','{$dt}')" ;
 
                         
-                        if ($this->sql($sql) == 'true')
+                        if (\app\classes\Db::getInstance()->sql($sql) == 'true')
                         {
                         echo "<p class = 'center'><img src='image/ok.png' border=0>   Новая страница была успешно добавлена!</p><p class = 'center'><a class = 'links' href=''>создать еще</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."list'>список страниц</a></p>";
                         }
@@ -53,8 +53,8 @@ class McreateEdit extends Db
     function retr_pageedit($id)
 	{ 
         $sql = 'SELECT parent_id,description,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,content,visible FROM pages WHERE id = '.$id.'';
-        $result = $this->sql($sql);
-        return $result;
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res;
     }
 
     // редактируем страницу
@@ -63,7 +63,7 @@ class McreateEdit extends Db
         $dt = time(); // текущая метка времени
         
         $sql = 'UPDATE pages SET ' .$aux_sql. ',lastmod='.$dt.'  WHERE id ='.$post['id'].'';
-        if ($this->sql($sql) == 'true')
+        if (\app\classes\Db::getInstance()->sql($sql) == 'true')
         {
             echo "<p class = 'center'><img src='image/ok.png' border=0>   Данные были успешно изменены!</p><p class = 'center'><a class = 'links' href=''>редактировать</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."list'>список страниц</a></p>";
         }
@@ -77,7 +77,7 @@ class McreateEdit extends Db
     function delete_page($id)
 	{
         $sql = 'DELETE  FROM pages WHERE id = '.$id.'';
-        if (!$res=$this->sql($sql))
+        if (!$res = \app\classes\Db::getInstance()->sql($sql))
 		{
 			echo "<p class = 'center'><img src='image/error.png' border=0>   Возникла ошибка при удалении страницы!</p>";	
 		}        
@@ -92,7 +92,7 @@ class McreateEdit extends Db
 	function menu_pos($lng)
 	{ 
         $sql = "SELECT * FROM pages WHERE language = '{$lng}' ORDER BY position ASC";
-        $res = $this->sql($sql);
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
     }
     
@@ -100,7 +100,7 @@ class McreateEdit extends Db
 	function pos_inc($pos)
 	{
         $sql = "UPDATE pages SET position = position+1 WHERE position >= {$pos}";
-        $this->sql($sql);
+        \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
     }
 }
 ?>
