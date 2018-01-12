@@ -1,12 +1,14 @@
 <?php
-class Mmenu extends Db 
+namespace app\classes;
+
+class Mmenu
 {
 	// возвращает список всех меню со всей информацией по каждому
 	function menu_pos($lng)
 	{ 
         $sql = "SELECT * FROM menus WHERE language = '{$lng}' ORDER BY position ASC";
-        $res = $this->sql($sql);
-        return $res;
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res; // возвращаем результат
     }
 	
 	// создает новое меню
@@ -18,7 +20,7 @@ class Mmenu extends Db
 				menus(menu_name,position,language,created,visible,header_visible)
 				VALUES('{$post['menu_name']}','{$post['position']}','{$post['language']}','{$dt}','{$post['visible']}','{$post['header_visible']}')" ;
 
-                        if ($this->sql($sql) == 'true')
+                        if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
                         {
                         echo "<p class = 'center'><img src='image/ok.png' border=0>   Новое меню успешно добавлено!</p><p class = 'center'><a class = 'links' href=''>создать еще</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."menulist'>список меню</a></p>";
                         }
@@ -33,8 +35,8 @@ class Mmenu extends Db
     function retr_menuedit($id)
 	{ 
         $sql = 'SELECT * FROM menus WHERE id = '.$id.'';
-        $result = $this->sql($sql);
-        return $result;
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res; // возвращаем результат
     }
 	
 	// редактируем меню
@@ -43,7 +45,7 @@ class Mmenu extends Db
         $dt = time(); // текущая метка времени
         
         $sql = 'UPDATE menus SET ' .$aux_sql. ',lastmod='.$dt.'  WHERE id ='.$post['id'].'';
-        if ($this->sql($sql) == 'true')
+        if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
         {
             echo "<p class = 'center'><img src='image/ok.png' border=0>   Данные были успешно изменены!</p><p class = 'center'><a class = 'links' href=''>редактировать</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."menulist'>список меню</a></p>";
         }
@@ -57,13 +59,13 @@ class Mmenu extends Db
     function delete_menu($id)
 	{
         $sql = 'DELETE  FROM menus WHERE id = '.$id.'';
-        if (!$res=$this->sql($sql))
+        if (!$res = \app\classes\Db::getInstance()->sql($sql))
 		{
 			echo "<p class = 'center'><img src='image/error.png' border=0>   Возникла ошибка при удалении меню!</p>";	
 		}        
 		else
 		{
-			return $res;	
+			return $res; // возвращаем результат
 		}
 		
     }
@@ -72,7 +74,7 @@ class Mmenu extends Db
 	function pos_inc($pos)
 	{
         $sql = "UPDATE menus SET position = position+1 WHERE position >= {$pos}";
-        $this->sql($sql);
+        \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
     }
 
 }

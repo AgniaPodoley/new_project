@@ -1,4 +1,5 @@
 <?php
+namespace app\classes;
 
 class Creview extends Mreview
 {

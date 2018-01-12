@@ -13,7 +13,7 @@
 	
         <div id="date">
 		<?php
-        $day = new GetDay();
+        $day = new \app\classes\GetDay();
         ?>
 		</div><!--date-->
 		
@@ -26,11 +26,11 @@
         <?php 
 		
 		// создаем новые обьекты
-        $vcreateedit = new CcreateEdit(); // для работы со страницами
-		$allmenus = new Cmenu(); // для работы с меню
-		$alllanguages = new Clanguages(); // для работы с языками
-		$settings = new Csettings(); // для работы с настройками сайта
-        $reviews = new Creview(); // для работы с отзывами
+        $vcreateedit = new \app\classes\CcreateEdit(); // для работы со страницами
+		$allmenus = new \app\classes\Cmenu(); // для работы с меню
+		$alllanguages = new \app\classes\Clanguages(); // для работы с языками
+		$settings = new \app\classes\Csettings(); // для работы с настройками сайта
+        $reviews = new \app\classes\Creview(); // для работы с отзывами
 		
 		// если от пользователя получены данные из формы
 					

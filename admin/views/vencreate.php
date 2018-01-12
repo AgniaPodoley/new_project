@@ -1,5 +1,5 @@
 <?php
-$editpage = new CcreateEdit();
+$editpage = new \app\classes\CcreateEdit();
 
 // получаем список всех языков
 $all_languages = $editpage->print_languages_list('');

@@ -5,7 +5,7 @@ session_start();
 // автозагрузка классов	
 function __autoload($name)
 {
-	require_once('classes/' . $name . '.php');
+	require_once($name.'.php');
 }
 	
 if (!isset($_POST['login']) || !isset($_POST['password']) )
@@ -58,7 +58,7 @@ if (!isset($_POST['login']) || !isset($_POST['password']) )
 		exit ("<center><img src='image/error.png' border=0><h4><h4>Вы ввели не всю информацию, вернитесь назад и заполните все поля!</h4><br><a href='index.php'>Назад</a></center>");
     }
 	
-	$check_authorisation = new Login(); 
+	$check_authorisation = new \app\classes\Login();
 	
     $login = $check_authorisation->clean_login($login);
     $password = $check_authorisation->clean_password($password);

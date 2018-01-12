@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class GetDay
 {
     public $month = array(

@@ -11,7 +11,7 @@
 </script>
 <?php
 
-$aux_list = new CcreateEdit();
+$aux_list = new \app\classes\CcreateEdit();
 $list = $aux_list->print_list('en');
 
 require_once "vlist.php" ;

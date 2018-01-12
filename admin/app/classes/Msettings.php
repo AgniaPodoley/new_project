@@ -1,41 +1,43 @@
 <?php
-class Msettings extends Db 
+namespace app\classes;
+
+class Msettings
 {
     // возвращает название домена
 	function return_domain()
 	{
-        $sql = "SELECT domainname  FROM constants WHERE id = 1";
-		$dom = $this->sql($sql);
+        $sql = "SELECT domainname  FROM constants WHERE id = 1";      
+        $dom = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос;
 		$res = mysqli_fetch_assoc($dom);
-        return $res;
+        return $res; // возвращаем результат
     }
 
 	// возвращает настройки сайта для языковых констант
 	function return_settings($lng){
 		$sql = "SELECT site,footer  FROM constants WHERE language ='".$lng."'";
-		$dom = $this->sql($sql);
-		$res = mysqli_fetch_assoc($dom);
-        return $res;
+        $dom = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос;
+        $res = mysqli_fetch_assoc($dom);
+        return $res; // возвращаем результат
 	}
 	
 	// возвращает все настройки сайта
 	function return_all_settings($lng){
 		$sql = "SELECT *  FROM constants WHERE language ='".$lng."'";
-		$dom = $this->sql($sql);
-		$res = mysqli_fetch_assoc($dom);
-        return $res;
+        $dom = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос;
+        $res = mysqli_fetch_assoc($dom);
+        return $res; // возвращаем результат
 	}
 	
 	// редактируем все настройки сайта
     function update_settings($aux_sql, $post)
 	{                       	
 		$anotherlanguage = "SELECT language,title FROM languages WHERE language !='".$post['language']."'";
-		$lng = $this->sql($anotherlanguage);
+		$lng = \app\classes\Db::getInstance()->sql($anotherlanguage);// выполняем запрос;;
 		$res = mysqli_fetch_assoc($lng);
 		
 		$sql = "UPDATE constants SET " .$aux_sql. " WHERE language ='".$post['language']."'";
 
-        if ($this->sql($sql) == 'true')
+        if (\app\classes\Db::getInstance()->sql($sql)  == 'true')
         {
             echo "<p class = 'center'><img src='image/ok.png' border=0>   Данные были успешно изменены!</p><p class = 'center'><a class = 'links' href=''>редактировать</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$res["language"]."settings'>список настроек для языка \"".$res["title"]."\"</a></p>";
         }

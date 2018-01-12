@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Clanguages extends Mlanguages 
 {		
 	// переводим спецсимволы в html сущности

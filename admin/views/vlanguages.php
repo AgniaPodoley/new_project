@@ -1,5 +1,5 @@
 <?php
-$ll = new  Clanguages();
+$ll = new \app\classes\Clanguages();
 $list = $ll->print_languages_list("");
 ?>
 <table class="table_page_list">

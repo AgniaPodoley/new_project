@@ -8,7 +8,7 @@ class McreateEdit
 	{ 
         $sql = "SELECT id, position, menu_name, language FROM pages ORDER BY position ASC";
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-        return $res;
+        return $res; // возвращаем результат
     }
 	
 	// возвращает список всех языков
@@ -16,7 +16,7 @@ class McreateEdit
 	{ 
         $sql = "SELECT * FROM languages WHERE language <> '{$exclude}'";
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-        return $res;
+        return $res; // возвращаем результат
     }
 	
 	// возвращает список всех меню
@@ -24,7 +24,7 @@ class McreateEdit
 	{ 
         $sql = "SELECT * FROM menus WHERE id <> '{$exclude}' AND language = '{$lng}'";
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-        return $res;
+        return $res; // возвращаем результат
     }
 	
 	// создает новую страницу
@@ -38,7 +38,7 @@ class McreateEdit
 				'{$post['menu_name']}',{$post['position']},'{$post['visible']}','{$post['visible_in_main_menu']}','{$post['visible_in_sidebar']}','{$post['active_link_in_sidebar']}','{$post['content']}','{$dt}')" ;
 
                         
-                        if (\app\classes\Db::getInstance()->sql($sql) == 'true')
+                        if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
                         {
                         echo "<p class = 'center'><img src='image/ok.png' border=0>   Новая страница была успешно добавлена!</p><p class = 'center'><a class = 'links' href=''>создать еще</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."list'>список страниц</a></p>";
                         }
@@ -54,7 +54,7 @@ class McreateEdit
 	{ 
         $sql = 'SELECT parent_id,description,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,content,visible FROM pages WHERE id = '.$id.'';
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-        return $res;
+        return $res; // возвращаем результат
     }
 
     // редактируем страницу
@@ -63,7 +63,7 @@ class McreateEdit
         $dt = time(); // текущая метка времени
         
         $sql = 'UPDATE pages SET ' .$aux_sql. ',lastmod='.$dt.'  WHERE id ='.$post['id'].'';
-        if (\app\classes\Db::getInstance()->sql($sql) == 'true')
+        if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
         {
             echo "<p class = 'center'><img src='image/ok.png' border=0>   Данные были успешно изменены!</p><p class = 'center'><a class = 'links' href=''>редактировать</a>&nbsp;|&nbsp;<a class = 'links' href='?page=".$post['language']."list'>список страниц</a></p>";
         }
@@ -83,7 +83,7 @@ class McreateEdit
 		}        
 		else
 		{
-			return $res;	
+			return $res; // возвращаем результат
 		}
 		
     }
@@ -93,7 +93,7 @@ class McreateEdit
 	{ 
         $sql = "SELECT * FROM pages WHERE language = '{$lng}' ORDER BY position ASC";
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-        return $res;
+        return $res; // возвращаем результат
     }
     
     // позиция в меню

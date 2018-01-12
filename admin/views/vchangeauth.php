@@ -32,7 +32,7 @@ else
 	}
 
 
-	$changeauth = new MchangeAuth(); 
+	$changeauth = new \app\classes\MchangeAuth();
 
 	$user = $changeauth->clean_login($user);
 	$pass0 = $changeauth->clean_password($pass0);

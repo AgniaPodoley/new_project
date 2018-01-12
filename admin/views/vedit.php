@@ -1,5 +1,5 @@
 <?php
-$editpage = new CcreateEdit();
+$editpage = new \app\classes\CcreateEdit();
 $id = $_GET['edit'];
 
 // получаем данные с базы о редактируемой странице

@@ -1,4 +1,6 @@
 <?php
+namespace app\classes;
+
 class Csettings extends Msettings
 {		
 	// переводим спецсимволы в html сущности

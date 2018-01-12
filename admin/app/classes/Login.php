@@ -1,5 +1,7 @@
 <?php
-class Login extends Db 
+namespace app\classes;
+
+class Login
 {
 	function clean_login($login)
 	{
@@ -29,8 +31,8 @@ class Login extends Db
     function return_authorisation()
 	{
         $sql = "SELECT * FROM users WHERE id=1";
-        $res = $this->sql($sql);
-        return $res;
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res; // возвращаем результат
     }
 }
 ?>

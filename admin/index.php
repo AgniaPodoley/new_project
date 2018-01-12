@@ -13,12 +13,12 @@ else
 	// автозагрузка классов
 	function __autoload($name)
 	{
-	   require_once('classes/' . $name . '.php');
+	   require_once($name.'.php');
 	}
 }
 
 // создадим основной обьект настроек
-$site_ini = new Msettings();
+$site_ini = new \app\classes\Msettings();
 
 // подключаем файл со статическими языковыми константами сайта
 $lng = $site_ini->return_settings("ru");

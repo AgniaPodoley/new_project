@@ -1,27 +1,29 @@
 <?php
-class Mlanguages extends Db 
+namespace app\classes;
+
+class Mlanguages
 {		
 	// возвращает список всех языков
 	function language_list($exclude)
 	{ 
-        $sql = "SELECT * FROM languages WHERE language <> '{$exclude}'";        
-        $res = $this->sql($sql);
-        return $res;
+        $sql = "SELECT * FROM languages WHERE language <> '{$exclude}'";
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res; // возвращаем результат
     }
 	
 	// возвращает выбранный язык для редактирования
     function retr_languageedit($id)
 	{ 
         $sql = 'SELECT * FROM languages WHERE id = '.$id.'';
-        $result = $this->sql($sql);
-        return $result;
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res; // возвращаем результат
     }
 	
 	// редактируем язык
     function update_language($aux_sql, $post)
 	{                
         $sql = 'UPDATE languages SET ' .$aux_sql. ' WHERE id ='.$post['id'].'';
-        if ($this->sql($sql) == 'true')
+        if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
         {
             echo "<p class = 'center'><img src='image/ok.png' border=0>   Данные были успешно изменены!</p><p class = 'center'><a class = 'links' href=''>редактировать</a>&nbsp;|&nbsp;<a class = 'links' href='?page=languages'>список языков</a></p>";
         }

@@ -50,7 +50,7 @@
 			Система управления сайтом
 		</h1>
 		<p>
-			Версия от 21.02.2017
+			Версия от 12.01.2018
 		</p>
         <!--<IMG class="header_admin" alt="" src="../upload/images/logo.png">-->
 	</div><!--header-->
