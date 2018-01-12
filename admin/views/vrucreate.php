@@ -130,6 +130,22 @@ $all_menus = $editpage->print_menu_list("","ru");
 			</select>
 		</td>
 	</tr>
+    <tr>
+        <td>отображать отзывы:	</td>
+        <td><select name = "reviews_visible" class="select">
+            <option value = "0">скрыть</option>
+            <option value = "1">отображать</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td>возможность добавлять отзывы:	</td>
+        <td><select name = "reviews_add" class="select">
+            <option value = "0">нет</option>
+            <option value = "1">да</option>
+            </select>
+        </td>
+    </tr>
 	<tr>
 		<td>текст страницы:<td>
 	</tr>

@@ -33,9 +33,9 @@ class McreateEdit
 		$dt = time(); // текущая метка времени
         
         $sql = "insert into
-				pages(description,parent_id,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,content,created)
+				pages(description,parent_id,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,reviews_visible,reviews_add,content,created)
 				VALUES('{$post['description']}','{$post['parent_id']}','{$post['keywords']}','{$post['language']}','{$post['title']}','{$post['menu_icon']}','{$post['icon_size']}','{$post['menu_number']}',
-				'{$post['menu_name']}',{$post['position']},'{$post['visible']}','{$post['visible_in_main_menu']}','{$post['visible_in_sidebar']}','{$post['active_link_in_sidebar']}','{$post['content']}','{$dt}')" ;
+				'{$post['menu_name']}',{$post['position']},'{$post['visible']}','{$post['visible_in_main_menu']}','{$post['visible_in_sidebar']}','{$post['active_link_in_sidebar']}','{$post['reviews_visible']}','{$post['reviews_add']}','{$post['content']}','{$dt}')" ;
 
                         
                         if ($res = \app\classes\Db::getInstance()->sql($sql) == 'true')
@@ -52,7 +52,7 @@ class McreateEdit
     // возвращает выбранную страницу для редактирования
     function retr_pageedit($id)
 	{ 
-        $sql = 'SELECT parent_id,description,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,content,visible FROM pages WHERE id = '.$id.'';
+        $sql = 'SELECT parent_id,description,keywords,language,title,menu_icon,icon_size,menu_number,menu_name,position,visible,visible_in_main_menu,visible_in_sidebar,active_link_in_sidebar,reviews_visible,reviews_add,content,visible FROM pages WHERE id = '.$id.'';
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат
     }

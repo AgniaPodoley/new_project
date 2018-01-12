@@ -237,6 +237,7 @@ class Config
                 created int(255) NOT NULL,
                 lastmod int(255) NOT NULL,
                 rating int(1) NOT NULL,
+                language varchar(255) NOT NULL,
                 PRIMARY KEY (id)
                 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 
@@ -319,16 +320,16 @@ class Config
 
         // reviews
         $addreview1 =  "insert into
-					reviews(page_id,name,review,autor,visible,state,created,rating)
-    				VALUES('3','Первый отзыв','Очень хороший отзыв на странице \"Пример страницы\"','Администратор сайта','1','new','{$dt}','5')";
+					reviews(page_id,name,review,autor,visible,state,created,rating,language)
+    				VALUES('3','Первый отзыв','Очень хороший отзыв на странице \"Пример страницы\"','Администратор сайта','1','new','{$dt}','5','ru')";
 
         $addreview2 =  "insert into
-					reviews(page_id,name,review,autor,visible,state,created,rating)
-    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','0','good','{$dt}','5')";
+					reviews(page_id,name,review,autor,visible,state,created,rating,language)
+    				VALUES('4','Second review','Very good review on page \"Example page\"','Site administrator','0','good','{$dt}','5','en')";
 
         $addreview3 =  "insert into
-					reviews(page_id,name,review,autor,visible,state,created,rating)
-    				VALUES('1','Отзыв на главной','Пример отзыва на странице \"Главная\"','Администратор сайта','1','good','{$dt}','4')";
+					reviews(page_id,name,review,autor,visible,state,created,rating,language)
+    				VALUES('1','Отзыв на главной','Пример отзыва на странице \"Главная\"','Администратор сайта','1','good','{$dt}','4','ru')";
 
         // users
 		$adduser = "insert into

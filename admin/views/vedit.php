@@ -186,7 +186,23 @@ $exclude_menu = $editpage->print_menu_list($page['menu_number'],$page['language'
 			</select>
 		</td>
 	</tr>
-	<tr>
+    <tr>
+        <td>отображать отзывы:	</td>
+        <td><select name = "reviews_visible" class="select">
+             <option value = "1" <?php if($page['reviews_visible']== 1){echo "selected";}?>>отображать</option>
+             <option value = "0" <?php if($page['reviews_visible']== 0){echo "selected";}?>>скрыть</option>
+             </select>
+        </td>
+    </tr>
+    <tr>
+        <td>возможность добавлять отзывы:	</td>
+        <td><select name = "reviews_add" class="select">
+            <option value = "1" <?php if($page['reviews_add']== 1){echo "selected";}?>>да</option>
+            <option value = "0" <?php if($page['reviews_add']== 0){echo "selected";}?>>нет</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
 		<td>текст страницы:<td>
 	</tr>
 	</table>
