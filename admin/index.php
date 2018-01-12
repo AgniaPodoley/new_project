@@ -13,7 +13,10 @@ else
 	// автозагрузка классов
 	function __autoload($name)
 	{
-	   require_once($name.'.php');
+        // конвертируем полный путь в пространстве имён с \ в /
+        $name = str_replace('\\', '/', $name);
+
+	    require_once($name.'.php');
 	}
 }
 

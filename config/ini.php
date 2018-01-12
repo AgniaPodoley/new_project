@@ -7,7 +7,10 @@ ini_set('display_errors', '0');
 // автозагрузка классов
 function __autoload($name)
 {
-   require_once($name.'.php');
+    // конвертируем полный путь в пространстве имён с \ в /
+    $name = str_replace('\\', '/', $name);
+
+    require_once($name.'.php');
 }
 
 // библиотека функций
