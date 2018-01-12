@@ -16,15 +16,17 @@ class Creview extends Mreview
 
     public function add_review($review){
 
-        //проверяем не пришел ли отзыв с главной страницы
+        // проверяем не пришел ли отзыв с главной страницы
         if (!$review['page_id']) {
             $review['page_id'] = 1;
         }
 
         $result = $this->add_new_review($review);
+
+        // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
         if($result){
-            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв на сайте", "{$review['review']}");
-            $send_notification->send();
+            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв на сайте {$_SERVER['HTTP_HOST']}", "{$review['review']}");
+            $send_notification->send("silent");
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
 
         }

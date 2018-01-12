@@ -28,7 +28,7 @@ class SendMail // класс подготовки и отправки email
 		$this->subject = substr(htmlspecialchars(trim($s)), 0, 1000);
         $this->mess = substr(htmlspecialchars(trim($mess)), 0, 1000000); 
         if($phone){$this->mess .= "\r\n\r\nНомер телефона для связи: ".$this->phone;}
-        $this->mess .= "\r\n\r\nЭто письмо было отправлено с формы обратной связи сайта ".$_SERVER['HTTP_HOST'];
+        $this->mess .= "\r\n\r\nЭто письмо было отправлено с сайта ".$_SERVER['HTTP_HOST'];
         $this->headers .= "From: " .$this->mail. "\r\n";
         $this->headers .= "Reply-To: " . $this->from . "\r\n";
         $this->headers .= "Content-type: text/plain; charset=\"utf-8\"\r\n";
