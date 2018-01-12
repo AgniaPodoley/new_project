@@ -25,7 +25,7 @@ class Creview extends Mreview
 
         // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
         if($result){
-            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв на сайте {$_SERVER['HTTP_HOST']}", "{$review['review']}");
+            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв на сайте  {$_SERVER['HTTP_HOST']}", "{$review['review']}");
             $send_notification->send("silent");
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
 
