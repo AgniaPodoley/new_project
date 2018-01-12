@@ -1,7 +1,7 @@
 <?php
 namespace app\classes;
 
-class MchangeAuth
+class MchangeAuth extends Login
 {
 	// обновляем логин/пароль для входа в систему администрирования
 	function change_authentification($login,$pass1)

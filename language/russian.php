@@ -39,4 +39,6 @@ define ('REVIEWBUTTON','Добавить отзыв');
 define ('NOTFIND','Запрашиваемая вами страница не существует, проверьте корректность написания в адресной строке');
 // footer
 define ('FOOTER',"$lng[footer]");
+define ('DEVELOPMENT',"Разработка:");
+define ('DEVELOPMENTCOMPANY',"Клуб интеллектуалов");
 ?>

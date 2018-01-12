@@ -25,7 +25,7 @@
 		<!--End Fonts-->
 
 		<!--Favicon-->   
-		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="shortcut icon" href="../favicon.ico" />
 		<!--End Favicon-->
 		
 		<!--Java scripts-->

@@ -14,7 +14,7 @@
 					</div>
 					<div class="col-md-4 development">
 						<div class="logotext">
-							Разработка:&nbsp;<a href="http://www.clubintellect.ru"><img  alt="" src="upload/images/site_development.png">&nbsp;<span style="color: #f39c12;">Клуб интеллектуалов </span></a>
+                            <?php echo DEVELOPMENT;?>&nbsp;<a href="http://www.clubintellect.ru"><img  alt="" src="upload/images/site_development.png">&nbsp;<span style="color: #f39c12;"><?php echo DEVELOPMENTCOMPANY;?> </span></a>
 						</div>
 						
 					</div>

@@ -38,4 +38,6 @@ define ('REVIEWBUTTON','Add review');
 define ('NOTFIND','The page you requested does not exist, check the correct spelling in the address bar');
 // footer
 define ('FOOTER',"$lng[footer]");
+define ('DEVELOPMENT',"Development:");
+define ('DEVELOPMENTCOMPANY',"Club of intellectuals");
 ?>
