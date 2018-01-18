@@ -14,6 +14,7 @@ class Creview extends Mreview
         return $review;
     }
 
+    // добавляем отзыв
     public function add_review($review){
 
         // проверяем не пришел ли отзыв с главной страницы
@@ -25,7 +26,10 @@ class Creview extends Mreview
 
         // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
         if($result){
-            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв на сайте  {$_SERVER['HTTP_HOST']}", "{$review['review']}");
+            $message = "<b>Текст отзыва:</b> <br>";
+            $message .= $review['review'];
+            $message .= "<br><a href ='{$_SERVER['HTTP_HOST']}/admin/views/reviews'>Одобрить отзыв</a><br>";
+            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв от {$review['autor']} на сайте {$_SERVER['HTTP_HOST']}", "{$message}");
             $send_notification->send("silent");
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
 

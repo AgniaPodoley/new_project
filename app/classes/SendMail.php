@@ -26,12 +26,12 @@ class SendMail // класс подготовки и отправки email
         $this->from = substr(htmlspecialchars(trim($from)), 0, 1000);
         $this->phone = substr(htmlspecialchars(trim($phone)), 0, 1000);
 		$this->subject = substr(htmlspecialchars(trim($s)), 0, 1000);
-        $this->mess = substr(htmlspecialchars(trim($mess)), 0, 1000000); 
+        $this->mess = substr(trim($mess), 0, 1000000);
         if($phone){$this->mess .= "\r\n\r\nНомер телефона для связи: ".$this->phone;}
         $this->mess .= "\r\n\r\nЭто письмо было отправлено с сайта ".$_SERVER['HTTP_HOST'];
         $this->headers .= "From: " .$this->mail. "\r\n";
         $this->headers .= "Reply-To: " . $this->from . "\r\n";
-        $this->headers .= "Content-type: text/plain; charset=\"utf-8\"\r\n";
+        $this->headers .= "Content-type: text/html; charset=\"utf-8\"\r\n";
     }
     
     public function send($silent=null) // метод отправки email
