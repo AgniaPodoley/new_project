@@ -12,6 +12,8 @@ else{
 }
 
 $review = $reviews->get_reviews_from_DB($id);
+// получаем количество страниц для отзывов
+$cols = $reviews->pagination();
 
 if(!empty($review)){
     echo "<h2>".REVIEWS."</h2>";
@@ -28,5 +30,10 @@ if(!empty($review)){
         echo "</div>";
     }
 
+}
+
+for ($i=1; $i<=$cols;$i++)
+{
+    echo "<a href=\"?review={$i}\"> {$i} ";
 }
 

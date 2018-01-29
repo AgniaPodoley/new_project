@@ -4,18 +4,12 @@ namespace app\classes;
 class Mreview
 {
     // пагинация
-    public function pagination()
+    public function rewiews_count()
     {
-        $reviews_per_page = 3;
+        $sql = "SELECT COUNT(*) FROM reviews"; // готовим запрос
 
-        $sql = "SELECT COUNT (*) FROM reviews"; // готовим запрос
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
-
-        $col_pages = $res/$reviews_per_page;
-
-        return $col_pages;
-
-
+        return $res;
     }
 
     public function return_reviews($id)
@@ -34,6 +28,7 @@ class Mreview
 
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат
+
     }
 
 }

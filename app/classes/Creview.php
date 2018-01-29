@@ -3,6 +3,20 @@ namespace app\classes;
 
 class Creview extends Mreview
 {
+    // посчитаем количество страниц для отзывов
+    public function pagination()
+    {
+        $reviews_per_page = 3;
+
+        $res = $this->rewiews_count();
+        $res =mysqli_fetch_array($res);
+
+        $reviews = $res[0];
+
+        $col = ceil($reviews/$reviews_per_page);
+        return $col;
+    }
+
     // возвращаем отзывы длдя определенной страницы
     public function get_reviews_from_DB($page){
 
