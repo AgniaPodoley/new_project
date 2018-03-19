@@ -3,10 +3,16 @@ namespace app\classes;
 
 class Creview extends Mreview
 {
+    // получаем количество отзывов на странице
+    public function get_reviews_per_page()
+    {
+        $col = 3;
+        return $col;
+    }
     // посчитаем количество страниц для отзывов
     public function pagination()
     {
-        $reviews_per_page = 3;
+        $reviews_per_page = $this->get_reviews_per_page();
 
         $res = $this->rewiews_count();
         $res =mysqli_fetch_array($res);
@@ -18,9 +24,11 @@ class Creview extends Mreview
     }
 
     // возвращаем отзывы длдя определенной страницы
-    public function get_reviews_from_DB($page){
+    public function get_reviews_from_DB($page,$start){
 
-        $res = $this->return_reviews($page); // запрос к БД
+        $start_from_page = $start * $this->get_reviews_per_page()- $this->get_reviews_per_page();
+
+        $res = $this->return_reviews($page,$start_from_page,$this->get_reviews_per_page()); // запрос к БД
         while ($row = mysqli_fetch_assoc($res))
         {
             $review[$row['id']] = $row;

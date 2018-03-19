@@ -12,9 +12,9 @@ class Mreview
         return $res;
     }
 
-    public function return_reviews($id)
+    public function return_reviews($id,$start_from_page,$lim)
     {
-        $sql = "SELECT id, name, review, autor, created, rating FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id DESC"; // готовим запрос
+        $sql = "SELECT id, name, review, autor, created, rating FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id DESC LIMIT {$start_from_page}, {$lim} "; // готовим запрос
 
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат

@@ -6,12 +6,15 @@ $review = array();
 // проверяем не зашёл ли пользователь впервые
 if(!$_GET['id']){
     $id = 1;
+    $start =1;
 }
 else{
     $id = $_GET['id'];
+    $start = $_GET['review'];
 }
 
-$review = $reviews->get_reviews_from_DB($id);
+$review = $reviews->get_reviews_from_DB($id,$start);
+
 // получаем количество страниц для отзывов
 $cols = $reviews->pagination();
 
@@ -34,6 +37,6 @@ if(!empty($review)){
 
 for ($i=1; $i<=$cols;$i++)
 {
-    echo "<a href=\"?review={$i}\"> {$i} ";
+    echo "<a href=\"?review={$i}\"> {$i}</a>";
 }
 
