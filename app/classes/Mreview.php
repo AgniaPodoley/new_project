@@ -20,7 +20,8 @@ class Mreview
         return $res; // возвращаем результат
     }
 
-    public function add_new_review($review){
+    public function add_new_review($review)
+    {
 
         $dt = time(); // текущая метка времени
 

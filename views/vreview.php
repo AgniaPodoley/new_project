@@ -1,14 +1,15 @@
 <?php
-
 $reviews = new \app\classes\Creview();
 $review = array();
 
 // проверяем не зашёл ли пользователь впервые
-if(!$_GET['id']){
+if(!$_GET['id']||!$_GET['review'])
+{
     $id = 1;
-    $start =1;
+    $start = 1; // номер начального отзыва
 }
-else{
+else
+{
     $id = $_GET['id'];
     $start = $_GET['review'];
 }
@@ -18,11 +19,14 @@ $review = $reviews->get_reviews_from_DB($id,$start);
 // получаем количество страниц для отзывов
 $cols = $reviews->pagination();
 
-if(!empty($review)){
+if(!empty($review))
+{
     echo "<h2>".REVIEWS."</h2>";
-    foreach ($review as $value){
+    foreach ($review as $value)
+    {
         echo "<div class=\"review\">";
-        foreach ($value as $key=>$item){
+        foreach ($value as $key=>$item)
+        {
             $res[$key]=$item;
         }
         echo "<h3 class=\"review_header\">".$res["name"]."</h3>";
@@ -37,6 +41,5 @@ if(!empty($review)){
 
 for ($i=1; $i<=$cols;$i++)
 {
-    echo "<a href=\"?review={$i}\"> {$i}</a>";
+    echo "<a href=\"?id={$_GET['id']}&review={$i}\"> {$i}</a>";
 }
-

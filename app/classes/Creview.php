@@ -9,6 +9,7 @@ class Creview extends Mreview
         $col = 3;
         return $col;
     }
+
     // посчитаем количество страниц для отзывов
     public function pagination()
     {
@@ -23,12 +24,13 @@ class Creview extends Mreview
         return $col;
     }
 
-    // возвращаем отзывы длдя определенной страницы
-    public function get_reviews_from_DB($page,$start){
+    // возвращаем отзывы для определенной страницы
+    public function get_reviews_from_DB($id,$start)
+    {
 
         $start_from_page = $start * $this->get_reviews_per_page()- $this->get_reviews_per_page();
 
-        $res = $this->return_reviews($page,$start_from_page,$this->get_reviews_per_page()); // запрос к БД
+        $res = $this->return_reviews($id,$start_from_page,$this->get_reviews_per_page()); // запрос к БД
         while ($row = mysqli_fetch_assoc($res))
         {
             $review[$row['id']] = $row;
@@ -37,17 +39,20 @@ class Creview extends Mreview
     }
 
     // добавляем отзыв
-    public function add_review($review){
+    public function add_review($review)
+    {
 
         // проверяем не пришел ли отзыв с главной страницы
-        if (!$review['page_id']) {
+        if (!$review['page_id'])
+        {
             $review['page_id'] = 1;
         }
 
         $result = $this->add_new_review($review);
 
         // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
-        if($result){
+        if($result)
+        {
             $message = "<b>Текст отзыва:</b> <br>";
             $message .= $review['review'];
             $message .= "<br><a href ='{$_SERVER['HTTP_HOST']}/admin/views/reviews'>Одобрить отзыв</a><br>";
@@ -56,7 +61,8 @@ class Creview extends Mreview
             echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
 
         }
-        else{
+        else
+        {
             echo "Извините, но в процессе отправки отзыва произошла ошибка.";
         }
     }
