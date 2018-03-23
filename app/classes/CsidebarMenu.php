@@ -30,7 +30,7 @@ class CsidebarMenu extends Msidebarmenu
 		echo '<li>';
 		//Проверяем активна ли ссылка пункта подменю
 		if($item[active_link_in_sidebar]){
-			echo "<a href=\"".DOMAINNAME."/?id=$item[id]\"><i class=\"$item[menu_icon] $item[icon_size]\"> </i> $item[menu_name]</a>";
+			echo "<a href=\"".DOMAINNAME."/?id=$item[id]&review=1\"><i class=\"$item[menu_icon] $item[icon_size]\"> </i> $item[menu_name]</a>";
 		}
 		else{
 			echo "<a href=\"\"><i class=\"$item[menu_icon] $item[icon_size]\"> </i> $item[menu_name]</a>";

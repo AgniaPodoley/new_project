@@ -11,11 +11,11 @@ class Creview extends Mreview
     }
 
     // посчитаем количество страниц для отзывов
-    public function pagination()
+    public function pagination($id)
     {
         $reviews_per_page = $this->get_reviews_per_page();
 
-        $res = $this->rewiews_count();
+        $res = $this->rewiews_count($id);
         $res =mysqli_fetch_array($res);
 
         $reviews = $res[0];
@@ -28,7 +28,7 @@ class Creview extends Mreview
     public function get_reviews_from_DB($id,$start)
     {
 
-        $start_from_page = $start * $this->get_reviews_per_page()- $this->get_reviews_per_page();
+        $start_from_page =($start * $this->get_reviews_per_page()) - $this->get_reviews_per_page();
 
         $res = $this->return_reviews($id,$start_from_page,$this->get_reviews_per_page()); // запрос к БД
         while ($row = mysqli_fetch_assoc($res))

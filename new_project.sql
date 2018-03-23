@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.7.4
+-- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Дек 02 2017 г., 13:59
--- Версия сервера: 10.1.16-MariaDB
--- Версия PHP: 7.0.9
+-- Время создания: Мар 23 2018 г., 15:22
+-- Версия сервера: 10.1.30-MariaDB
+-- Версия PHP: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -124,9 +126,9 @@ CREATE TABLE `pages` (
 
 INSERT INTO `pages` (`id`, `parent_id`, `description`, `keywords`, `title`, `menu_icon`, `icon_size`, `menu_number`, `menu_name`, `position`, `content`, `language`, `created`, `lastmod`, `visible`, `visible_in_main_menu`, `visible_in_sidebar`, `active_link_in_sidebar`, `reviews_visible`, `reviews_add`) VALUES
 (1, 0, '', '', 'адрес сайта | Ключевое слово | Главная', 'icon-home', 'icon-large', 1, 'Главная', 1, 'Главная', 'ru', 1504795508, 0, '1', '1', '1', '1', '1', '1'),
-(2, 0, '', '', 'site address | Keyword | Main', 'icon-home', 'icon-large', 2, 'Main', 3, 'Main', 'en', 1504795508, 0, '1', '1', '1', '1', '1', '1'),
-(3, 1, '', '', 'адрес сайта | Ключевое слово | Пример страницы', '', '', 1, 'Пример страницы', 2, 'Пример страницы', 'ru', 1504795508, 0, '1', '0', '1', '1', '1', '1'),
-(4, 2, '', '', 'site address | Keyword | Example page', '', '', 2, 'Example page', 4, 'Example page', 'en', 1504795508, 0, '1', '0', '1', '1', '1', '0');
+(2, 0, '', '', 'site address | Keyword | Main', 'icon-home', 'icon-large', 2, 'Main', 4, 'Main', 'en', 1504795508, 0, '1', '1', '1', '1', '1', '1'),
+(3, 1, '', '', 'адрес сайта | Ключевое слово | Пример страницы', '', '', 1, 'Пример страницы', 2, '<p>\r\n	Пример страницы</p>\r\n', 'ru', 1504795508, 1521807375, '1', '1', '1', '1', '1', '1'),
+(4, 2, '', '', 'site address | Keyword | Example page', '', '', 2, 'Example page', 5, 'Example page', 'en', 1504795508, 0, '1', '0', '1', '1', '1', '0');
 
 -- --------------------------------------------------------
 
@@ -153,26 +155,27 @@ CREATE TABLE `reviews` (
 --
 
 INSERT INTO `reviews` (`id`, `page_id`, `name`, `review`, `autor`, `visible`, `state`, `created`, `lastmod`, `rating`, `email`) VALUES
-(1, 3, 'Первый отзыв', 'Очень хороший отзыв на странице "Пример страницы"', 'Администратор сайта', '1', 'new', 0, 0, NULL, NULL),
-(2, 4, 'Second review', 'Very good review on page "Example page"', 'Site administrator', '1', 'good', 0, 0, NULL, NULL),
-(3, 1, 'Отзыв на главной', 'Пример отзыва на странице "Главная"', 'Администратор сайта', '1', 'good', 1504795508, 0, NULL, NULL),
-(4, 1, 'Супер крутой отзыв', 'Лучший сайт', 'Владлен', '', 'new', 0, 0, NULL, NULL),
-(5, 1, 'Супер крутой отзыв2', 'qqqqqqqqqqqqqqqqqqqqqqq', 'Владлен Иванович', '1', 'good', 0, 0, NULL, NULL),
-(6, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0, NULL, NULL),
-(7, 0, 'Король', 'Прекрасный отзыв', 'ццц', '0', 'good', 0, 0, NULL, NULL),
-(8, 0, '1', '2', '3', '0', 'good', 0, 0, NULL, NULL),
+(1, 3, 'Первый отзыв', 'Очень хороший отзыв на странице \"Пример страницы\"', 'Администратор сайта', '1', 'good', 0, 0, NULL, NULL),
+(2, 4, 'Second review', 'Very good review on page \"Example page\"', 'Site administrator', '1', 'good', 0, 0, NULL, NULL),
+(3, 3, 'Отзыв на главной', 'Пример отзыва на странице \"Главная\"', 'Администратор сайта', '1', 'good', 1504795508, 0, NULL, NULL),
+(4, 3, 'Супер крутой отзыв', 'Лучший сайт', 'Владлен', '1', 'good', 0, 0, NULL, NULL),
+(5, 3, 'Супер крутой отзыв2', 'qqqqqqqqqqqqqqqqqqqqqqq', 'Владлен Иванович', '1', 'good', 0, 0, NULL, NULL),
+(6, 3, 'Король', 'Прекрасный отзыв', 'ццц', '1', 'good', 0, 0, NULL, NULL),
+(7, 3, 'Король', 'Прекрасный отзыв', 'ццц', '1', 'good', 0, 0, NULL, NULL),
+(8, 1, '1', '2', '3', '1', 'good', 0, 0, NULL, NULL),
 (9, 1, '4', '5', '6', '1', 'good', 0, 0, NULL, NULL),
-(10, 1, '22', '22', '22', '1', 'new', 0, 0, NULL, NULL),
-(11, 1, 'xcv', 'xcv', 'gnom', '1', 'new', 0, 0, NULL, NULL),
-(12, 1, 'kkk', 'kkk', 'kkk', '1', 'new', 0, 0, NULL, NULL),
-(13, 1, 'jjj', 'jjjj', 'jjj', '1', 'new', 0, 0, NULL, NULL),
-(14, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0, NULL, NULL),
-(15, 1, 'ttt', 'ttt', 'ttt', '1', 'new', 0, 0, NULL, NULL),
-(16, 1, '7', '7', '7', '1', 'new', 0, 0, NULL, NULL),
+(10, 1, '22', '22', '22', '1', 'good', 0, 0, NULL, NULL),
+(11, 1, 'xcv', 'xcv', 'gnom', '1', 'good', 0, 0, NULL, NULL),
+(12, 1, 'kkk', 'kkk', 'kkk', '1', 'good', 0, 0, NULL, NULL),
+(13, 1, 'jjj', 'jjjj', 'jjj', '1', 'good', 0, 0, NULL, NULL),
+(14, 1, 'ttt', 'ttt', 'ttt', '1', 'good', 0, 0, NULL, NULL),
+(15, 1, 'ttt', 'ttt', 'ttt', '1', 'good', 0, 0, NULL, NULL),
+(16, 1, '7', '7', '7', '1', 'good', 0, 0, NULL, NULL),
 (17, 1, '555', '555', '555', '1', 'good', 1507123778, 0, NULL, NULL),
 (18, 1, 'мой отзыв', '1111', 'Дядя Ваня', '1', 'good', 1512219199, 0, 0, 'lyubomyr83@gmail.com'),
-(19, 1, 'супер', 'Отзыв от Дяди Фёдора', 'Дядя Фёдор', '1', 'new', 1512219331, 0, 0, 'lyubomyr83@gmail.com'),
-(20, 1, 'мой отзыв', 'Дядя Фёдор', 'Дядя Фёдор', '1', 'good', 1512219390, 0, 5, 'lyubomyr83@gmail.com');
+(19, 1, 'супер', 'Отзыв от Дяди Фёдора', 'Дядя Фёдор', '1', 'good', 1512219331, 0, 0, 'lyubomyr83@gmail.com'),
+(20, 1, 'мой отзыв', 'Дядя Фёдор', 'Дядя Фёдор', '1', 'good', 1512219390, 0, 5, 'lyubomyr83@gmail.com'),
+(21, 3, 'sss', 'sss', 'sss', '1', 'good', 1521807119, 0, 4, 'sss@1.com');
 
 -- --------------------------------------------------------
 
@@ -242,31 +245,38 @@ ALTER TABLE `users`
 --
 ALTER TABLE `constants`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `languages`
 --
 ALTER TABLE `languages`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `menus`
 --
 ALTER TABLE `menus`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- AUTO_INCREMENT для таблицы `pages`
 --
 ALTER TABLE `pages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT для таблицы `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

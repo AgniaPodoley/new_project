@@ -27,7 +27,7 @@ class Cmenu extends Mmenu
     public function printItem($item, $items, $childrens){
     
 		echo '<li class="dropdown">';
-		echo "<a class=\"dropdown-toggle\" data-target=\"#\" href=\"".DOMAINNAME."/?id=$item[id]\"><i class=\"$item[menu_icon] $item[icon_size]\"> </i> $item[menu_name]</a>";
+		echo "<a class=\"dropdown-toggle\" data-target=\"#\" href=\"".DOMAINNAME."/?id=$item[id]&review=1\"><i class=\"$item[menu_icon] $item[icon_size]\"> </i> $item[menu_name]</a>";
 		
 		// Выводились ли дочерние элементы?
 		$ul = false;

@@ -1,4 +1,5 @@
 <?php
+// создаём объект для работы с отзывами
 $reviews = new \app\classes\Creview();
 $review = array();
 
@@ -17,7 +18,7 @@ else
 $review = $reviews->get_reviews_from_DB($id,$start);
 
 // получаем количество страниц для отзывов
-$cols = $reviews->pagination();
+$cols = $reviews->pagination($id);
 
 if(!empty($review))
 {

@@ -4,9 +4,9 @@ namespace app\classes;
 class Mreview
 {
     // пагинация
-    public function rewiews_count()
+    public function rewiews_count($id)
     {
-        $sql = "SELECT COUNT(*) FROM reviews"; // готовим запрос
+        $sql = "SELECT COUNT(*) FROM reviews WHERE page_id ='".$id."'"; // готовим запрос
 
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res;
@@ -15,6 +15,7 @@ class Mreview
     public function return_reviews($id,$start_from_page,$lim)
     {
         $sql = "SELECT id, name, review, autor, created, rating FROM reviews WHERE visible ='1' AND page_id ='".$id."' AND state ='good' ORDER BY id DESC LIMIT {$start_from_page}, {$lim} "; // готовим запрос
+        echo $sql;
 
         $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
         return $res; // возвращаем результат
