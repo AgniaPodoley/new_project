@@ -24,10 +24,14 @@ $sitesettings = $settings->return_all_settings($lng);
 		<td>название сайта</td>
 		<td><input type="text" name="site" value="<?php echo $sitesettings['site'];?>"></td>
 	</tr>
+    <tr>
+        <td>количество отзывов на странице</td>
+        <td><input type="text" name="reviews_on_page" value="<?php echo $sitesettings['reviews_on_page'];?>"></td>
+    </tr>
 	<tr>
 		<td>copyright</td>
 		<td><input type="text" name="footer" value="<?php echo $sitesettings['footer'];?>"></td>
-	</tr>		
+	</tr>
 	</table>
 	<br />
 	<input type="submit"  value="Сохранить">

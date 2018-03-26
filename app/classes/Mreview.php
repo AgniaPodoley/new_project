@@ -3,6 +3,14 @@ namespace app\classes;
 
 class Mreview
 {
+    // получаем количество отзывов на странице
+    public function reviews_on_page($lng)
+    {
+        $sql = "SELECT reviews_on_page FROM constants WHERE language = '".$lng."'";
+        $res = \app\classes\Db::getInstance()->sql($sql);// выполняем запрос
+        return $res;
+    }
+
     // пагинация
     public function rewiews_count($id)
     {

@@ -2,6 +2,7 @@
 // создаём объект для работы с отзывами
 $reviews = new \app\classes\Creview();
 $review = array();
+$lng = $_SESSION['language'];
 
 // проверяем не зашёл ли пользователь впервые
 if(!$_GET['id']||!$_GET['review'])
@@ -15,10 +16,10 @@ else
     $start = $_GET['review'];
 }
 
-$review = $reviews->get_reviews_from_DB($id,$start);
+$review = $reviews->get_reviews_from_DB($lng,$id,$start);
 
 // получаем количество страниц для отзывов
-$cols = $reviews->pagination($id);
+$cols = $reviews->pagination($lng,$id);
 
 if(!empty($review))
 {
