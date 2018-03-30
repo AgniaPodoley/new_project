@@ -12,7 +12,13 @@ class Creview extends Mreview
         return $col;
     }
 
-    // посчитаем количество страниц для отзывов
+    // количество соседних ссылок
+    public function get_neighbours_links()
+    {
+        return 1;
+    }
+
+    // посчитаем количество ссылок для отзывов
     public function pagination($lng,$id)
     {
         $reviews_per_page = $this->get_reviews_per_page($lng);

@@ -21,6 +21,12 @@ $review = $reviews->get_reviews_from_DB($lng,$id,$start);
 // получаем количество страниц для отзывов
 $cols = $reviews->pagination($lng,$id);
 
+// получаем количество соседних ссылок от текущей
+$neighbours = $reviews->get_neighbours_links();
+
+
+
+// выводим отзывы
 if(!empty($review))
 {
     echo "<h2>".REVIEWS."</h2>";
@@ -41,7 +47,20 @@ if(!empty($review))
 
 }
 
+// выводим ссылки с номерами страниц
 for ($i=1; $i<=$cols;$i++)
 {
-    echo "<a href=\"?id={$_GET['id']}&review={$i}\"> {$i}</a>";
+    echo "<a href=\"?id={$_GET['id']}&review={$i}\">";
+    // выделяем номер активной ссылки
+    if($_GET['review']==$i)
+    {
+       echo "<b>{$i}</b>";
+    }
+    else
+    {
+
+        echo $i;
+    }
+
+    echo "</a>";
 }
