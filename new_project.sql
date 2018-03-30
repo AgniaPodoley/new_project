@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Мар 23 2018 г., 15:22
+-- Время создания: Мар 30 2018 г., 16:31
 -- Версия сервера: 10.1.30-MariaDB
 -- Версия PHP: 7.2.1
 
@@ -33,16 +33,17 @@ CREATE TABLE `constants` (
   `language` varchar(255) NOT NULL,
   `domainname` varchar(255) NOT NULL,
   `site` varchar(255) NOT NULL,
-  `footer` varchar(255) NOT NULL
+  `footer` varchar(255) NOT NULL,
+  `reviews_on_page` int(4) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `constants`
 --
 
-INSERT INTO `constants` (`id`, `language`, `domainname`, `site`, `footer`) VALUES
-(1, 'ru', 'http://localhost/new_project', 'Название сайта', 'Не является публичной офертой'),
-(2, 'en', 'http://localhost/new_project', 'Site name', 'Not a public offer');
+INSERT INTO `constants` (`id`, `language`, `domainname`, `site`, `footer`, `reviews_on_page`) VALUES
+(1, 'ru', 'http://localhost/new_project', 'Название сайта', 'Не является публичной офертой', 5),
+(2, 'en', 'http://localhost/new_project', 'Site name', 'Not a public offer', 4);
 
 -- --------------------------------------------------------
 

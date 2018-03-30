@@ -176,6 +176,7 @@ class Config
                      domainname varchar(255) NOT NULL,
 					 site varchar(255) NOT NULL,
 					 footer varchar(255) NOT NULL,
+					 reviews_on_page int(3) NOT NULL,
                      PRIMARY KEY (id)
                      ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 		
@@ -279,12 +280,12 @@ class Config
 
 		// constants
         $addConstantsRu = "insert into
-						constants(language,domainname,site,footer)
-						VALUES('ru','{$domain_name}','Название сайта','Не является публичной офертой')";
+						constants(language,domainname,site,footer,reviews_on_page)
+						VALUES('ru','{$domain_name}','Название сайта','Не является публичной офертой','3')";
                     
         $addConstantsEn = "insert into
-						constants(language,domainname,site,footer)
-						VALUES('en','{$domain_name}','Site name','Not a public offer')";
+						constants(language,domainname,site,footer,reviews_on_page)
+						VALUES('en','{$domain_name}','Site name','Not a public offer','3')";
 		
 		// languages
         $addLanguageRu = "insert into
