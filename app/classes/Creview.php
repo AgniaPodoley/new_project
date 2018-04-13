@@ -15,7 +15,7 @@ class Creview extends Mreview
     // количество соседних ссылок
     public function get_neighbours_links()
     {
-        return 1;
+        return 2;
     }
 
     // посчитаем количество ссылок для отзывов

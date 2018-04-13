@@ -8,23 +8,15 @@ $lng = $_SESSION['language'];
 if(!$_GET['id']||!$_GET['review'])
 {
     $id = 1;
-    $start = 1; // номер начального отзыва
+    $start = 1; // номер начальной страницы отзывов
 }
 else
 {
     $id = $_GET['id'];
-    $start = $_GET['review'];
+    $start = $_GET['review']; // номер текущей страницы отзывов
 }
 
 $review = $reviews->get_reviews_from_DB($lng,$id,$start);
-
-// получаем количество страниц для отзывов
-$cols = $reviews->pagination($lng,$id);
-
-// получаем количество соседних ссылок от текущей
-$neighbours = $reviews->get_neighbours_links();
-
-
 
 // выводим отзывы
 if(!empty($review))
@@ -47,14 +39,45 @@ if(!empty($review))
 
 }
 
-// выводим ссылки с номерами страниц
-for ($i=1; $i<=$cols;$i++)
+// ПОСТРАНИЧНАЯ НАВИГАЦИЯ ДЛЯ ОТЗЫВОВ
+
+$col_page_links = $reviews->pagination($lng,$id); // получаем количество страниц для отзывов
+
+$neighbours = $reviews->get_neighbours_links(); // получаем количество соседних ссылок от текущей
+$left_neighbour = $start - $neighbours; // начальная ссылка слева
+$right_neighbour = $start + $neighbours; // последняя ссылка справа
+
+// делаем проверки
+if($left_neighbour < 1)
 {
-    echo "<a href=\"?id={$_GET['id']}&review={$i}\">";
+    $left_neighbour = 1;
+}
+
+if($right_neighbour > $col_page_links)
+{
+    $right_neighbour = $col_page_links;
+}
+
+// выводим ссылку на предыдущую страницу
+if($start != 1)
+{
+    echo "<a href=\"?id={$_GET['id']}&review=".($start-1)."\">Предыдущая</a> ";
+}
+
+if($start != 1)
+{
+    echo "<a href=\"?id={$_GET['id']}&review=1\">1 ...</a> ";
+}
+
+
+// выводим ссылки с номерами страниц
+for ($i=$left_neighbour; $i<=$right_neighbour;$i++)
+{
+    echo "<a  href=\"?id={$_GET['id']}&review={$i}\">";
     // выделяем номер активной ссылки
-    if($_GET['review']==$i)
+    if($start==$i)
     {
-       echo "<b>{$i}</b>";
+       echo "<span class='current'>{$i}</span>"; // если ссылка текущая, то выводим жирным
     }
     else
     {
@@ -62,5 +85,14 @@ for ($i=1; $i<=$cols;$i++)
         echo $i;
     }
 
-    echo "</a>";
+    echo "</a>&nbsp;";
 }
+
+// выводим общее количество страниц для отзывов в виде ссылки и ссылку на следующую страницу
+if($start != $col_page_links)
+{
+    echo "... <a href=\"?id={$_GET['id']}&review={$col_page_links}\">{$col_page_links}</a> ";
+    echo "<a href=\"?id={$_GET['id']}&review=".($start+1)."\">Следующая</a>";
+}
+
+
