@@ -75,6 +75,13 @@
                             <input type="text" class="form-control"  id="domain_name" placeholder="http://domainname" name="domain_name">
                         </div>
 
+                        <h4>Адрес электронной почты администратора</h4>
+
+                        <div class="form-group" >
+                            <label class="sr-only" for="admin_mail">e-mail администратора</label>
+                            <input type="text" class="form-control"  id="admin_mail" placeholder="e-mail администратора" name="email">
+                        </div>
+
                         <h4>Настройки для подключения к серверу БД</h4>
 
                             <div class="form-group">
@@ -108,13 +115,14 @@
     }
 
     $domain_name = $_POST['domain_name'];
+    $email = $_POST['email'];
     $db_server_adress = $_POST['db_server_adress'];
     $db_database_name = $_POST['db_database_name'];
     $db_user_name = $_POST['db_user_name'];
     $db_user_password = $_POST['db_user_password'];
 
     // проверяем заполнил ли пользователь все поля
-    if (empty($domain_name)|| empty($db_server_adress)|| empty($db_database_name)|| empty($db_user_name)|| empty($db_user_password)){
+    if (empty($domain_name)||empty($email)|| empty($db_server_adress)|| empty($db_database_name)|| empty($db_user_name)|| empty($db_user_password)){
         die("Вы ввели не всю необходимую информацию <a href='install.php'>Попробовать еще раз</a>");
     }
 
@@ -177,6 +185,7 @@ class Config
 					 site varchar(255) NOT NULL,
 					 footer varchar(255) NOT NULL,
 					 reviews_on_page int(3) NOT NULL,
+					 admin_email varchar(255) NOT NULL,
                      PRIMARY KEY (id)
                      ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 		
@@ -280,12 +289,12 @@ class Config
 
 		// constants
         $addConstantsRu = "insert into
-						constants(language,domainname,site,footer,reviews_on_page)
-						VALUES('ru','{$domain_name}','Название сайта','Не является публичной офертой','3')";
+						constants(language,domainname,site,footer,reviews_on_page,admin_email)
+						VALUES('ru','{$domain_name}','Название сайта','Не является публичной офертой','3','{$email}')";
                     
         $addConstantsEn = "insert into
-						constants(language,domainname,site,footer,reviews_on_page)
-						VALUES('en','{$domain_name}','Site name','Not a public offer','3')";
+						constants(language,domainname,site,footer,reviews_on_page,admin_email)
+						VALUES('en','{$domain_name}','Site name','Not a public offer','3','{$email}')";
 		
 		// languages
         $addLanguageRu = "insert into

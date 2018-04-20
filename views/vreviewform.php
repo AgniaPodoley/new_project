@@ -18,5 +18,6 @@
     <p><input type="text" name="autor" placeholder="<?=REVIEWUSERNAMEINPUT?>"></p>
     <p><label><?=REVIEWUSEREMAIL?></label></p>
     <p><input type="text" name="email" placeholder="<?=REVIEWUSEREMAILINPUT?>"></p>
+    <p><input type="text" name="phone" placeholder="" class="phone"></p>
     <p><button type="submit" class="btn btn-primary"><?=REVIEWBUTTON?></button></p>
 </form>

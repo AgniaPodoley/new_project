@@ -223,7 +223,12 @@
 		font-family: "Times New Roman", Georgia, Serif;
 	}
 
-
+	/* Форма для отправки отзывов */
+	.phone{
+		position:absolute;
+		top:-6000px;
+		left:-6000px;
+	}
 
 	/* Звездочки системы рейтинга отзывов */
 	.rating_green{

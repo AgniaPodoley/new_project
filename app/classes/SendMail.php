@@ -11,9 +11,9 @@ namespace app\classes;
 
 class SendMail // класс подготовки и отправки email
 {
-	private $to = "lyubomyr83@mail.ru"; // email получателя
-    private $from; // email отправителя
-    private $mail = "office@compguys.ru";
+	private $to; // email получателя
+    private $from; // email отправителя для ответа
+    private $mail = "office@"; // email сервера с доменным именем
     private $phone; // номер телефона отправителя
     private $subject; // тема письма
     private $mess; // текст письма
@@ -23,6 +23,8 @@ class SendMail // класс подготовки и отправки email
     {
 		$s = '=?utf-8?B?'.base64_encode($subject).'?='; // кодируем тему письма
 
+        $this->getAdminEmail();
+        $this->getServerEmail();
         $this->from = substr(htmlspecialchars(trim($from)), 0, 1000);
         $this->phone = substr(htmlspecialchars(trim($phone)), 0, 1000);
 		$this->subject = substr(htmlspecialchars(trim($s)), 0, 1000);
@@ -32,6 +34,24 @@ class SendMail // класс подготовки и отправки email
         $this->headers .= "From: " .$this->mail. "\r\n";
         $this->headers .= "Reply-To: " . $this->from . "\r\n";
         $this->headers .= "Content-type: text/html; charset=\"utf-8\"\r\n";
+    }
+
+    public function getAdminEmail() // метод получения почты администратора сайта
+    {
+        $sql = "SELECT admin_email FROM constants";
+        $result = Db::getInstance()->sql($sql);
+        $email = mysqli_fetch_assoc($result);
+        $this->to = $email['admin_email'];
+    }
+
+    public function getServerEmail() // метод получения почты сервера домена с которого отправляем почту
+    {
+        $sql = "SELECT domainname FROM constants";
+        $result = Db::getInstance()->sql($sql);
+        $email = mysqli_fetch_assoc($result);
+        $server_email = str_replace('http://','',$email['domainname']);
+        $server_email = str_replace('/','.',$server_email);
+        $this->mail .= $server_email;
     }
     
     public function send($silent=null) // метод отправки email

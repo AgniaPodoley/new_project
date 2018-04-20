@@ -50,28 +50,32 @@ class Creview extends Mreview
     public function add_review($review)
     {
 
-        // проверяем не пришел ли отзыв с главной страницы
-        if (!$review['page_id'])
+        if (!$review['phone'])
         {
-            $review['page_id'] = 1;
+            // проверяем не пришел ли отзыв с главной страницы
+            if (!$review['page_id'])
+            {
+                $review['page_id'] = 1;
+            }
+
+            $result = $this->add_new_review($review);
+
+            // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
+            if($result)
+            {
+                $message = "<b>Текст отзыва:</b> <br>";
+                $message .= $review['review'];
+                $message .= "<br><a href ='{$_SERVER['HTTP_HOST']}/admin/views/reviews'>Одобрить отзыв</a><br>";
+                $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв от {$review['autor']} на сайте {$_SERVER['HTTP_HOST']}", "{$message}");
+                $send_notification->send("silent");
+                echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
+
+            }
+            else
+            {
+                echo "Извините, но в процессе отправки отзыва произошла ошибка.";
+            }
         }
 
-        $result = $this->add_new_review($review);
-
-        // если новый отзыв добавлен, то уведомим об этом администратора по электронной почте
-        if($result)
-        {
-            $message = "<b>Текст отзыва:</b> <br>";
-            $message .= $review['review'];
-            $message .= "<br><a href ='{$_SERVER['HTTP_HOST']}/admin/views/reviews'>Одобрить отзыв</a><br>";
-            $send_notification = new \app\classes\SendMail("{$review['email']}","Новый отзыв от {$review['autor']} на сайте {$_SERVER['HTTP_HOST']}", "{$message}");
-            $send_notification->send("silent");
-            echo $review["autor"].", мы получили ваш отзыв и вскоре добавим его.";
-
-        }
-        else
-        {
-            echo "Извините, но в процессе отправки отзыва произошла ошибка.";
-        }
     }
 }
